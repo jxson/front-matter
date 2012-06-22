@@ -1,0 +1,23 @@
+{
+  "author": "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
+  "name": "y",
+  "description": "Extract YAML front matter from strings",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jxson/front-matter",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jxson/front-matter.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "blah"
+  },
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {
+    "yamlparser": "0.0.2"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
