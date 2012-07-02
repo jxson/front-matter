@@ -13,7 +13,7 @@
     "test": "blah"
   },
   "engines": {
-    "node": "~0.6.11"
+    "node": "~0.6.10"
   },
   "dependencies": {
     "yamlparser": "0.0.2"
