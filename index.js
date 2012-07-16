@@ -3,7 +3,8 @@ var yaml = require('yamlparser')
 
 module.exports = function(data){
   // http://stackoverflow.com/q/1068308
-  var regex = /^(\s*---([\s\S]+)---\s*)/gi
+  var data = data || ''
+    , regex = /^(\s*---([\s\S]+)---\s*)/gi
     , match = regex.exec(data)
     , attributes
     , body
