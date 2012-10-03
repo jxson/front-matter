@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/jxson/front-matter.png)](http://travis-ci.org/jxson/front-matter)
 node-front-matter
 =================
 
