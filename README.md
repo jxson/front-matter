@@ -1,31 +1,61 @@
-node-front-matter
-=================
+# front-matter
 
-http://en.wikipedia.org/wiki/YAML
+Extract [YAML][yaml] front matter from strings. If your familiar with
+jeykl then you know what's up.
 
-Extract YAML front matter from strings.
+This is part of a long running project I have been working on where I
+am spinning out all it's internals to separate, more useful modules.
+If your in need of a static site generator check out [haiku][haiku].
 
-So you have this file `example.md`:
+## Example
+
+So you have a file `example.md`:
 
     ---
-    title:
-    description:
+    title: Just hack'n
+    description: Nothing to see here
     ---
 
-    This is some content
+    This is some content about some stuff that happened sometime ago
 
 Then you can do this:
 
-    var frontmatter = require('front-matter')
-      , extract = frontmatter(data)
+    var fs = require('fs')
+      , fm = require('front-matter')
 
+    fs.readFile('./example.md', 'utf8', function(err, data){
+      if (err) throw err
 
-And end up with this:
+      var content = fm(data)
 
-    console.log(extract)
+      console.log(content)
+    })
 
-    { attributes: { title: 'example'
-        , description: 'example description'
-        }
-      , body: '\nThis is some content\n'
+And end up with an object like this:
+
+    { attributes: { title: 'Just hack\'n'
+      , description: 'Nothing to see here'
+      }
+    , body: 'This is some content'
     }
+
+## var content = fm(string)
+
+Return a `content` object with two properties:
+
+* `content.yaml` contains the extracted yaml attributes in json form
+* `content.body` contains the string contents below the yaml fold
+
+## Install
+
+With [npm][npm] do:
+
+    npm install front-matter
+
+# License
+
+MIT
+
+[yaml]: http://en.wikipedia.org/wiki/YAML
+[haiku]: http://haiku.io
+[npm]: http://npmjs.org
