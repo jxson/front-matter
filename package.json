@@ -16,8 +16,10 @@
     "node": ">=0.6.10"
   },
   "dependencies": {
-    "yamlparser": "0.0.2"
+    "yaml-js": "0.0.5"
   },
-  "devDependencies": {},
-  "optionalDependencies": {}
+  "devDependencies": {
+    "chai": "1.4.2"
+    "mocha": "1.7.4"
+  }
 }

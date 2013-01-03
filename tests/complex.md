@@ -18,6 +18,4 @@ wrapped-text: >
   paragraph breaks
 ---
 
-Using the front-matter module you can access YAML attributes defined at the top of a string the way this file shows, YAML attributes must be defined at the top and between a set of three dashes "---" or "= yaml =".
-
-This module is intentionally small and leaves out things like reading the file, this allows you the flexibility to use your preferred file reading method and get really creative with mixing in formats and templating languages. For example these three paragraphs will be the `body` and can be treated as a Mustache template which could be populated from the YAML attributes and then parsed through Markdown.
+Some crazy stuff going on up there ^^

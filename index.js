@@ -1,4 +1,4 @@
-var parser = require('yamlparser')
+var parser = require('yaml-js')
 
 module.exports = function(string){
   var body = string
@@ -6,7 +6,7 @@ module.exports = function(string){
     , match = matcher(string, '= yaml =') || matcher(string, '---')
 
   if (match){
-    attributes = parser.eval(match[2].replace(/^\s+|\s+$/g, ''))
+    attributes = parser.load(match[2].replace(/^\s+|\s+$/g, ''))
     body = string.replace(match[0], '')
   }
 

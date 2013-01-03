@@ -1,8 +1,11 @@
 
-var assert = require('assert')
-  , fm = require('../')
+var fm = require('../')
   , fs = require('fs')
   , path = require('path')
+  , chai = require('chai')
+  , assert = chai.assert
+
+chai.use(helpers)
 
 describe('fm(string)', function(){
   it('parses yaml delinetead by `---`', function(done){
@@ -10,19 +13,17 @@ describe('fm(string)', function(){
       if (err) return done(err)
 
       var content = fm(data)
+        , body = '\ndon\'t break\n\n'
+          + '---\n\n'
+          + 'ALso this shouldn\'t be a problem\n'
 
-      assert.equal(typeof content, 'object')
-      assert.equal(typeof content.attributes, 'object')
-      assert.equal(content.body, [''
-      , 'don\'t break'
-      , ''
-      , '---'
-      , ''
-      , 'ALso this shouldn\'t be a problem'
-      , ''
-      ].join('\n'))
-      assert.equal(content.attributes.title, 'Three dashes marks the spot')
-      assert.equal(content.attributes.tags.length, 3)
+      assert.validExtraction(content)
+      assert.hasBody(content, body)
+      assert.propertyVal(content.attributes
+      , 'title'
+      , 'Three dashes marks the spot')
+      assert.property(content.attributes, 'tags')
+      assert.lengthOf(content.attributes.tags, 3)
 
       done()
     })
@@ -33,36 +34,60 @@ describe('fm(string)', function(){
       if (err) return done(err)
 
       var content = fm(data)
+        , body = '\nPlays nice with markdown syntax highlighting\n'
 
-      assert.equal(typeof content, 'object')
-      assert.equal(typeof content.attributes, 'object')
-      assert.equal(content.body, [''
-      , 'Plays nice with markdown syntax highlighting'
-      , ''].join('\n'))
-      assert.equal(content.attributes.title, 'I couldn\'t think of a '
-      + 'better name')
-      assert.equal(content.attributes.description, 'Just an example of '
-      + 'using `= yaml =`')
+      assert.validExtraction(content)
+      assert.hasBody(content, body)
+      assert.propertyVal(content.attributes
+      , 'title'
+      , 'I couldn\'t think of a better name')
+      assert.propertyVal(content.attributes
+      , 'description'
+      , 'Just an example of using `= yaml =`')
 
       done()
     })
   })
 
-  describe('when there is NOT front matter', function(){
+  it('works on strings missing front-matter', function(){
     var body = 'No front matter here'
-      , content
+      , content = fm(body)
 
-    before(function(){
-      content = fm(body)
-    })
+    assert.validExtraction(content)
+    assert.hasBody(content, body)
+    assert.lengthOf(Object.keys(content.attributes), 0)
+  })
 
-    it('has an empty `content.yaml` object', function(){
-      assert.equal(typeof content.attributes, 'object')
-      assert.equal(Object.keys(content.attributes).length, 0)
-    })
+  it('handles complex yaml', function(done){
+    read('complex.md', function(err, data){
+      if (err) return done(err)
 
-    it('populates `content.body`', function(){
-      assert.equal(content.body, body)
+      var content = fm(data)
+        , body = '\nSome crazy stuff going on up there ^^\n'
+        , foldedText = 'There once was a man from Darjeeling\n'
+          + 'Who got on a bus bound for Ealing\n'
+          + '    It said on the door\n'
+          + '    "Please don\'t spit on the floor"\n'
+          + 'So he carefully spat on the ceiling\n'
+        , wrappedText = 'Wrapped text will be folded into a single '
+          'paragraph\nBlank lines denote paragraph breaks'
+
+      assert.validExtraction(content)
+      assert.hasBody(content, body)
+      assert.propertyVal(content.attributes
+      , 'title'
+      , 'Complex yaml example')
+      assert.propertyVal(content.attributes
+      , 'title'
+      , 'Complex yaml example')
+      assert.property(content.attributes, 'tags')
+      assert.lengthOf(content.attributes.tags, 3)
+
+      assert.propertyVal(content.attributes
+      , 'folded-text'
+      , foldedText)
+
+      done()
     })
   })
 })
@@ -73,3 +98,31 @@ function read(file, callback){
 
   fs.readFile(file, 'utf8', callback)
 }
+
+function helpers(chai, utils){
+  var Assertion = chai.Assertion
+    , assert = chai.assert
+
+  Assertion.includeStack = true
+
+  Assertion.addMethod('validExtraction', function(extraction, message){
+    assert.isObject(content)
+
+    assert.property(extraction, 'attributes')
+    assert.isObject(extraction.attributes)
+
+    assert.property(extraction, 'body')
+    assert.isString(extraction.body)
+  })
+
+  assert.validExtraction = function(extraction, message){
+    new Assertion(extraction, message).is['validExtraction']
+  }
+
+  assert.hasBody = function(extraction, body, message){
+    assert.property(extraction, 'body')
+    assert.isString(extraction.body)
+    assert.propertyVal(extraction, 'body', body)
+  }
+}
+
