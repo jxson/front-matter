@@ -1,11 +1,10 @@
 # front-matter
 
-Extract [YAML][yaml] front matter from strings. If your familiar with
-jeykl then you know what's up.
+Extract arbitrary [YAML][yaml] front matter from strings. This is a concept that was originally introduced in the jeykll blogging system and is pretty useful where you want to be able to easily add meta data to content.
 
 This is part of a long running project I have been working on where I
-am spinning out all it's internals to separate, more useful modules.
-If your in need of a static site generator check out [haiku][haiku].
+am splitting out internals of [haiku][haiku] into to separate, more
+useful and shareable modules. If your in need of a static site generator [check it out][haiku].
 
 ## Example
 

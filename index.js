@@ -1,26 +1,26 @@
-var yaml = require('yamlparser')
-;
+var parser = require('yamlparser')
 
-module.exports = function(data){
-  // http://stackoverflow.com/q/1068308
-  var data = data || ''
-    , regex = /^(\s*---([\s\S]+)---\s*)/gi
-    , match = regex.exec(data)
-    , attributes
-    , body
+module.exports = function(string){
+  var body = string
+    , attributes = {}
+    , match = matcher(string, '= yaml =') || matcher(string, '---')
 
-  if (match && match.length > 0){
-    var yamlString = match[2].replace(/^\s+|\s+$/g, '')
-
-    attributes = yaml.eval(yamlString)
-    body = data.replace(match[0], '')
-  } else {
-    attributes = {};
-    body = data;
+  if (match){
+    attributes = parser.eval(match[2].replace(/^\s+|\s+$/g, ''))
+    body = string.replace(match[0], '')
   }
 
-  return {
-    attributes: attributes,
-    body: body
-  };
+  return { attributes: attributes, body: body }
+}
+
+function matcher(string, seperator){
+  var seperator = seperator || '---'
+    , pattern = '^('
+      + seperator
+      + '$([\\s\\S]*?)'
+      + seperator+'$\\n)'
+    , regex = new RegExp(pattern, 'm')
+    , match = regex.exec(string)
+
+  if (match && match.length > 0) return match
 }
