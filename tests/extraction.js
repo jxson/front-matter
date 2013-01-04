@@ -5,11 +5,11 @@ var fm = require('../')
   , chai = require('chai')
   , assert = chai.assert
 
-chai.use(helpers)
+chai.use(fmAsserts)
 
 describe('fm(string)', function(){
   it('parses yaml delinetead by `---`', function(done){
-    read('dashes.md', function(err, data){
+    read('dashes-seperator.md', function(err, data){
       if (err) return done(err)
 
       var content = fm(data)
@@ -58,8 +58,8 @@ describe('fm(string)', function(){
     assert.lengthOf(Object.keys(content.attributes), 0)
   })
 
-  it('handles complex yaml', function(done){
-    read('complex.md', function(err, data){
+  it('parses wrapped text in yaml prperly', function(done){
+    read('wrapped-text.md', function(err, data){
       if (err) return done(err)
 
       var content = fm(data)
@@ -69,20 +69,9 @@ describe('fm(string)', function(){
           + '    It said on the door\n'
           + '    "Please don\'t spit on the floor"\n'
           + 'So he carefully spat on the ceiling\n'
-        , wrappedText = 'Wrapped text will be folded into a single '
-          'paragraph\nBlank lines denote paragraph breaks'
 
       assert.validExtraction(content)
       assert.hasBody(content, body)
-      assert.propertyVal(content.attributes
-      , 'title'
-      , 'Complex yaml example')
-      assert.propertyVal(content.attributes
-      , 'title'
-      , 'Complex yaml example')
-      assert.property(content.attributes, 'tags')
-      assert.lengthOf(content.attributes.tags, 3)
-
       assert.propertyVal(content.attributes
       , 'folded-text'
       , foldedText)
@@ -93,13 +82,13 @@ describe('fm(string)', function(){
 })
 
 function read(file, callback){
-  var dir =  path.resolve(__dirname)
+  var dir =  path.resolve(__dirname, '../examples')
     , file = path.join(dir, file)
 
   fs.readFile(file, 'utf8', callback)
 }
 
-function helpers(chai, utils){
+function fmAsserts(chai, utils){
   var Assertion = chai.Assertion
     , assert = chai.assert
 

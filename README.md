@@ -1,12 +1,14 @@
 # front-matter
 
-Extract arbitrary [YAML][yaml] front matter from strings. This is a concept that was originally introduced in the jeykll blogging system and is pretty useful where you want to be able to easily add meta data to content.
+Extract [YAML][yaml] front matter from strings.
 
-This is part of a long running project I have been working on where I
-am splitting out internals of [haiku][haiku] into to separate, more
-useful and shareable modules. If your in need of a static site generator [check it out][haiku].
+This modules does not do any IO (file loading or reading), only extracting yaml front matter from strings.
 
-## Example
+This concept that was originally introduced to me through the [jeykll][jeykll] blogging system and is pretty useful where you want to be able to easily add metadata to content without the need for a database.
+
+<!-- This is part of a long running project I have been working on where I am splitting out internals of [haiku][haiku] into to separate, more useful and shareable modules. If your in need of a static site generator [check it out][haiku]. -->
+
+# Example
 
 So you have a file `example.md`:
 
@@ -15,7 +17,7 @@ So you have a file `example.md`:
     description: Nothing to see here
     ---
 
-    This is some content about some stuff that happened sometime ago
+    This is some text about some stuff that happened sometime ago
 
 Then you can do this:
 
@@ -38,12 +40,16 @@ And end up with an object like this:
     , body: 'This is some content'
     }
 
-## var content = fm(string)
+# Methods
+
+    var fm = require('front-matter')
+
+## fm(string)
 
 Return a `content` object with two properties:
 
-* `content.yaml` contains the extracted yaml attributes in json form
-* `content.body` contains the string contents below the yaml fold
+* `content.attributes` contains the extracted yaml attributes in json form
+* `content.body` contains the string contents below the yaml separators
 
 ## Install
 
@@ -58,3 +64,4 @@ MIT
 [yaml]: http://en.wikipedia.org/wiki/YAML
 [haiku]: http://haiku.io
 [npm]: http://npmjs.org
+[jeykll]: https://github.com/mojombo/jekyll
