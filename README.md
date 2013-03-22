@@ -1,6 +1,5 @@
-[![build status](https://secure.travis-ci.org/jxson/front-matter.png)](http://travis-ci.org/jxson/front-matter)
 
-# front-matter
+# front-matter [![build status](https://secure.travis-ci.org/jxson/front-matter.png)](http://travis-ci.org/jxson/front-matter)
 
 Extract [YAML][yaml] front matter from strings.
 
