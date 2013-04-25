@@ -23,7 +23,7 @@
     "node": ">=0.6.10"
   },
   "dependencies": {
-    "yaml-js": "0.0.5"
+    "yaml-js": "0.0.7"
   },
   "devDependencies": {
     "chai": "1.4.2",
