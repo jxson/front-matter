@@ -14,21 +14,12 @@ module.exports = function(string){
 }
 
 function matcher(string, seperator){
-  if (process.platform === 'win32')
-    var seperator = seperator || '---'
-      , pattern = '^('
-        + seperator
-        + '$([\\s\\S]*?)'
-        + seperator+'$\\r\\n)'
-      , regex = new RegExp(pattern, 'm')
-      , match = regex.exec(string)
 
-  else
-    var seperator = seperator || '---'
+  var seperator = seperator || '---'
       , pattern = '^('
         + seperator
         + '$([\\s\\S]*?)'
-        + seperator+'$\\n)'
+        + seperator+'$' + (process.platform === 'win32' ? '\\r?' : '') + '\\n)'
       , regex = new RegExp(pattern, 'm')
       , match = regex.exec(string)
 
