@@ -19,7 +19,7 @@ function matcher(string, seperator){
       , pattern = '^('
         + seperator
         + '$([\\s\\S]*?)'
-        + seperator+'$' + (process.platform === 'win32' ? '\\r?' : '') + '\\n)'
+        + seperator+'$' + (process.platform === 'win32' ? '\\r?' : '') + '(?:\\n)?)'
       , regex = new RegExp(pattern, 'm')
       , match = regex.exec(string)
 

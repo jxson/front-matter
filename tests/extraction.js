@@ -58,7 +58,25 @@ describe('fm(string)', function(){
     assert.lengthOf(Object.keys(content.attributes), 0)
   })
 
-  it('parses wrapped text in yaml prperly', function(done){
+  it('works on strings missing body', function(done){
+    read('missing-body.md', function(err, data){
+      if (err) return done(err)
+
+      var content = fm(data)
+
+      assert.validExtraction(content)
+      assert.hasBody(content, '')
+      assert.propertyVal(content.attributes
+          , 'title'
+          , 'Three dashes marks the spot')
+      assert.property(content.attributes, 'tags')
+      assert.lengthOf(content.attributes.tags, 3)
+
+      done()
+    })
+  })
+
+  it('parses wrapped text in yaml properly', function(done){
     read('wrapped-text.md', function(err, data){
       if (err) return done(err)
 
