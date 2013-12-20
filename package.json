@@ -28,5 +28,12 @@
   "devDependencies": {
     "chai": "1.4.2",
     "mocha": "1.7.4"
-  }
+  },
+  "contributors": [
+    "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
+    "Jordan Santell <jsantell@gmail.com> (https://github.com/jsantell)",
+    "Kai Davenport <kaiyadavenport@gmail.com> (https://github.com/binocarlos)",
+    "Jean-Philippe Monette <contact@jpmonette.net> (https://github.com/jpmonette)",
+    "Marc-André Arseneault <marc-andre@arsnl.ca> (https://github.com/arsnl)"
+  ]
 }
