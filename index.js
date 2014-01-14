@@ -1,6 +1,8 @@
 var parser = require('yaml-js')
 
-module.exports = function(string){
+module.exports = parse;
+
+function parse (string){
   var body = string
     , attributes = {}
     , match = matcher(string, '= yaml =') || matcher(string, '---')
@@ -11,6 +13,15 @@ module.exports = function(string){
   }
 
   return { attributes: attributes, body: body }
+}
+
+parse.test = function(string) {
+  var body = string
+    if (matcher(string, '= yaml =') || matcher(string, '---')) {
+      return true
+    } else {
+      return false
+    }
 }
 
 function matcher(string, seperator){
