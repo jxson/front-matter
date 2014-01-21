@@ -26,8 +26,7 @@
     "yaml-js": "0.0.7"
   },
   "devDependencies": {
-    "chai": "1.4.2",
-    "mocha": "1.7.4"
+    "mocha": "~1.17.0"
   },
   "contributors": [
     "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",

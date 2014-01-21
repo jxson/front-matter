@@ -1,11 +1,8 @@
 
-var fm = require('../')
-  , fs = require('fs')
-  , path = require('path')
-  , chai = require('chai')
-  , assert = chai.assert
-
-chai.use(fmAsserts)
+const fm = require('../')
+const fs = require('fs')
+const path = require('path')
+const assert = require('assert')
 
 describe('fm(string)', function(){
   it('parses yaml delinetead by `---`', function(done){
@@ -13,17 +10,18 @@ describe('fm(string)', function(){
       if (err) return done(err)
 
       var content = fm(data)
-        , body = '\ndon\'t break\n\n'
-          + '---\n\n'
-          + 'ALso this shouldn\'t be a problem\n'
+      var body = [ 'don\'t break'
+          , '---'
+          , 'Also this shouldn\'t be a problem'
+          ].join('\n\n')
 
-      assert.validExtraction(content)
-      assert.hasBody(content, body)
-      assert.propertyVal(content.attributes
-      , 'title'
-      , 'Three dashes marks the spot')
-      assert.property(content.attributes, 'tags')
-      assert.lengthOf(content.attributes.tags, 3)
+      assert.ok(content.attributes)
+      assert.equal(content.attributes.title, 'Three dashes marks the spot')
+      assert.equal(content.attributes.tags.length, 3)
+
+      // it's a pita to match line breaks exactly
+      assert.ok(content.body)
+      assert.ok(content.body.match(body))
 
       done()
     })
@@ -34,16 +32,15 @@ describe('fm(string)', function(){
       if (err) return done(err)
 
       var content = fm(data)
-        , body = '\nPlays nice with markdown syntax highlighting\n'
+      var body = 'Plays nice with markdown syntax highlighting'
+      var meta = content.attributes // less typing
 
-      assert.validExtraction(content)
-      assert.hasBody(content, body)
-      assert.propertyVal(content.attributes
-      , 'title'
-      , 'I couldn\'t think of a better name')
-      assert.propertyVal(content.attributes
-      , 'description'
-      , 'Just an example of using `= yaml =`')
+      assert.ok(meta)
+      assert.equal(meta.title, 'I couldn\'t think of a better name')
+      assert.equal(meta.description, 'Just an example of using `= yaml =`')
+
+      assert.ok(content.body)
+      assert.ok(content.body.match(body))
 
       done()
     })
@@ -53,9 +50,8 @@ describe('fm(string)', function(){
     var body = 'No front matter here'
       , content = fm(body)
 
-    assert.validExtraction(content)
-    assert.hasBody(content, body)
-    assert.lengthOf(Object.keys(content.attributes), 0)
+    assert.ok(content.attributes)
+    assert.equal(content.body, body)
   })
 
   it('works on strings missing body', function(done){
@@ -64,13 +60,12 @@ describe('fm(string)', function(){
 
       var content = fm(data)
 
-      assert.validExtraction(content)
-      assert.hasBody(content, '')
-      assert.propertyVal(content.attributes
-          , 'title'
-          , 'Three dashes marks the spot')
-      assert.property(content.attributes, 'tags')
-      assert.lengthOf(content.attributes.tags, 3)
+      assert.ok(content.attributes)
+      assert.equal(content.attributes.title, 'Three dashes marks the spot')
+      assert.equal(content.attributes.tags.length, 3)
+
+      // it's a pita to match line breaks exactly
+      assert.equal(content.body, '')
 
       done()
     })
@@ -81,18 +76,18 @@ describe('fm(string)', function(){
       if (err) return done(err)
 
       var content = fm(data)
-        , body = '\nSome crazy stuff going on up there ^^\n'
-        , foldedText = 'There once was a man from Darjeeling\n'
-          + 'Who got on a bus bound for Ealing\n'
-          + '    It said on the door\n'
-          + '    "Please don\'t spit on the floor"\n'
-          + 'So he carefully spat on the ceiling\n'
+      var body = '\nSome crazy stuff going on up there ^^\n'
+      var folded = [ 'There once was a man from Darjeeling'
+          , 'Who got on a bus bound for Ealing'
+          , '    It said on the door'
+          , '    "Please don\'t spit on the floor"'
+          , 'So he carefully spat on the ceiling\n'
+          ].join('\n')
 
-      assert.validExtraction(content)
-      assert.hasBody(content, body)
-      assert.propertyVal(content.attributes
-      , 'folded-text'
-      , foldedText)
+      assert.ok(content.attributes)
+      assert.equal(content.attributes['folded-text'], folded)
+
+      assert.equal(content.body, body)
 
       done()
     })
@@ -105,31 +100,3 @@ function read(file, callback){
 
   fs.readFile(file, 'utf8', callback)
 }
-
-function fmAsserts(chai, utils){
-  var Assertion = chai.Assertion
-    , assert = chai.assert
-
-  Assertion.includeStack = true
-
-  Assertion.addMethod('validExtraction', function(extraction, message){
-    assert.isObject(content)
-
-    assert.property(extraction, 'attributes')
-    assert.isObject(extraction.attributes)
-
-    assert.property(extraction, 'body')
-    assert.isString(extraction.body)
-  })
-
-  assert.validExtraction = function(extraction, message){
-    new Assertion(extraction, message).is['validExtraction']
-  }
-
-  assert.hasBody = function(extraction, body, message){
-    assert.property(extraction, 'body')
-    assert.isString(extraction.body)
-    assert.propertyVal(extraction, 'body', body)
-  }
-}
-
