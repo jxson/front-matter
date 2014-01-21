@@ -1,38 +1,30 @@
-var parser = require('yaml-js')
 
-module.exports = parse;
+const parser = require('yaml-js')
+const seperators = [ '---', '= yaml =']
+const pattern = pattern = '^('
+      + '((= yaml =)|(---))'
+      + '$([\\s\\S]*?)'
+      + '\\2'
+      + '$'
+      + (process.platform === 'win32' ? '\\r?' : '')
+      + '(?:\\n)?)'
+const regex = new RegExp(pattern, 'm')
 
-function parse (string){
-  var body = string
-    , attributes = {}
-    , match = matcher(string, '= yaml =') || matcher(string, '---')
+module.exports = extractor
+module.exports.test = regex.test
 
-  if (match){
-    attributes = parser.load(match[2].replace(/^\s+|\s+$/g, '')) || {}
-    body = string.replace(match[0], '')
-  }
+function extractor(string) {
+  string = string || ''
+
+  if (regex.test(string)) return parse(string)
+  else return { attributes: {}, body: string }
+}
+
+function parse(string) {
+  var match = regex.exec(string)
+  var yaml = match[match.length - 1].replace(/^\s+|\s+$/g, '')
+  var attributes = parser.load(yaml) || {}
+  var body = string.replace(match[0], '')
 
   return { attributes: attributes, body: body }
-}
-
-parse.test = function(string) {
-  var body = string
-    if (matcher(string, '= yaml =') || matcher(string, '---')) {
-      return true
-    } else {
-      return false
-    }
-}
-
-function matcher(string, seperator){
-
-  var seperator = seperator || '---'
-      , pattern = '^('
-        + seperator
-        + '$([\\s\\S]*?)'
-        + seperator+'$' + (process.platform === 'win32' ? '\\r?' : '') + '(?:\\n)?)'
-      , regex = new RegExp(pattern, 'm')
-      , match = regex.exec(string)
-
-  if (match && match.length > 0) return match
 }
