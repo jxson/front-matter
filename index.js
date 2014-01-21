@@ -11,7 +11,7 @@ const pattern = pattern = '^('
 const regex = new RegExp(pattern, 'm')
 
 module.exports = extractor
-module.exports.test = regex.test
+module.exports.test = test
 
 function extractor(string) {
   string = string || ''
@@ -27,4 +27,10 @@ function parse(string) {
   var body = string.replace(match[0], '')
 
   return { attributes: attributes, body: body }
+}
+
+function test(string){
+  string = string || ''
+
+  return regex.test(string)
 }
