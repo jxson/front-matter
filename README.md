@@ -63,6 +63,14 @@ Return a `content` object with two properties:
 * `content.attributes` contains the extracted yaml attributes in json form
 * `content.body` contains the string contents below the yaml separators
 
+# fm.test(string)
+
+Check if a string contains a front matter header of "---" or "= yaml =". Primarily used internally but is useful outside of the module.
+
+Returns `true` or `false`
+
+    fm.test(string) #=> true || false
+
 # Contributing
 
 front-matter is an OPEN Source Project so please help out by [reporting bugs](http://github.com/jxson/front-matter/issues) or [forking and opening pull](https://github.com/jxson/front-matter) requests when possible.
