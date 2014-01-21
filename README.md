@@ -76,6 +76,7 @@ This module is awesome beacuse of all the folks who helped out:
 * **Kai Davenport**: [github](https://github.com/binocarlos)
 * **Jean-Philippe Monette**: [github](https://github.com/jpmonette) - [twitter](https://twitter.com/jpmonette)
 * **Marc-André Arseneault**: [github](https://github.com/arsnl) - [twitter](https://twitter.com/im_arsnl)
+* **Bret Comnes**: [github](https://github.com/bcomnes) - [bret.io](http://bret.io)
 
 # LICENSE (MIT)
 
