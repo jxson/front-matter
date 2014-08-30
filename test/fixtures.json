@@ -1,0 +1,6 @@
+{
+  "dashes-separator": "---\ntitle: Three dashes marks the spot\ntags:\n  - yaml\n  - front-matter\n  - dashes\nexpaned-description: with some --- crazy stuff in it\n---\n\ndon't break\n\n---\n\nAlso this shouldn't be a problem\n",
+  "missing-body": "---\ntitle: Three dashes marks the spot\ntags:\n  - yaml\n  - front-matter\n  - dashes\nexpaned-description: with some --- crazy stuff in it\n---\n",
+  "wrapped-text": "---\ntitle: Complex yaml example\ndescription: You can use the front-matter module to convert this\ntags: [example, yaml, node]\nfolded-text: |\n  There once was a man from Darjeeling\n  Who got on a bus bound for Ealing\n      It said on the door\n      \"Please don't spit on the floor\"\n  So he carefully spat on the ceiling\nwrapped-text: >\n  Wrapped text\n  will be folded\n  into a single\n  paragraph\n\n  Blank lines denote\n  paragraph breaks\n---\n\nSome crazy stuff going on up there ^^\n",
+  "yaml-seperator": "= yaml =\ntitle: I couldn't think of a better name\ndescription: Just an example of using `= yaml =`\n= yaml =\n\nPlays nice with markdown syntax highlighting\n"
+}

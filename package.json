@@ -17,7 +17,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*-test.js --reporter spec"
+    "test": "make test"
   },
   "engines": {
     "node": ">=0.6.10"
@@ -26,7 +26,10 @@
     "yaml-js": "0.0.7"
   },
   "devDependencies": {
-    "mocha": "~1.17.0"
+    "minimist": "^0.2.0",
+    "mocha": "~1.17.0",
+    "prova": "^1.14.0",
+    "run-parallel": "^1.0.0"
   },
   "contributors": [
     "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
