@@ -17,16 +17,16 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*-test.js --reporter spec"
+    "test": "mocha tests/*-test.js"
   },
   "engines": {
     "node": ">=0.6.10"
   },
   "dependencies": {
-    "yaml-js": "0.0.7"
+    "yaml-js": "^0.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.17.0"
+    "mocha": "^2.1.0"
   },
   "contributors": [
     "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
