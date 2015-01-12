@@ -75,7 +75,7 @@ Returns `true` or `false`
 
 front-matter is an OPEN Source Project so please help out by [reporting bugs](http://github.com/jxson/front-matter/issues) or [forking and opening pull](https://github.com/jxson/front-matter) requests when possible.
 
-### Contirbutors
+### Contributors
 
 This module is awesome beacuse of all the folks who helped out:
 
@@ -85,6 +85,7 @@ This module is awesome beacuse of all the folks who helped out:
 * **Jean-Philippe Monette**: [github](https://github.com/jpmonette) - [twitter](https://twitter.com/jpmonette)
 * **Marc-André Arseneault**: [github](https://github.com/arsnl) - [twitter](https://twitter.com/im_arsnl)
 * **Bret Comnes**: [github](https://github.com/bcomnes) - [bret.io](http://bret.io)
+* **Shinnosuke Watanabe**: [github](https://github.com/shinnn)
 
 # LICENSE (MIT)
 
