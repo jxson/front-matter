@@ -1,7 +1,7 @@
 
 const parser = require('yaml-js')
 const seperators = [ '---', '= yaml =']
-const pattern = pattern = '^('
+const pattern = '^('
       + '((= yaml =)|(---))'
       + '$([\\s\\S]*?)'
       + '\\2'
