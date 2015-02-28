@@ -2,7 +2,7 @@
 const parser = require('yaml-js')
 const seperators = [ '---', '= yaml =']
 const optionalByteOrderMark = '\\ufeff?'
-const pattern = pattern = '^('
+const pattern = '^('
       + optionalByteOrderMark
       + '((= yaml =)|(---))'
       + '$([\\s\\S]*?)'
