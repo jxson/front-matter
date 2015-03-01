@@ -92,6 +92,19 @@ describe('fm(string)', function(){
       done()
     })
   })
+
+  it('works on files with byte order mark', function(done){
+    read('bom.md', function(err, data){
+      if (err) return done(err)
+
+      var content = fm(data)
+      
+      assert.ok(content.attributes)
+      assert.equal(content.attributes.title, "Relax guy, I'm not hiding any BOMs")
+      
+      done()
+    })
+  })
 })
 
 function read(file, callback){
