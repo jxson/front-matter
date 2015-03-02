@@ -1,8 +1,8 @@
 
-const parser = require('yaml-js')
-const seperators = [ '---', '= yaml =']
-const optionalByteOrderMark = '\\ufeff?'
-const pattern = '^('
+var parser = require('yaml-js')
+var seperators = [ '---', '= yaml =']
+var optionalByteOrderMark = '\\ufeff?'
+var pattern = '^('
       + optionalByteOrderMark
       + '((= yaml =)|(---))'
       + '$([\\s\\S]*?)'
@@ -10,7 +10,7 @@ const pattern = '^('
       + '$'
       + (process.platform === 'win32' ? '\\r?' : '')
       + '(?:\\n)?)'
-const regex = new RegExp(pattern, 'm')
+var regex = new RegExp(pattern, 'm')
 
 module.exports = extractor
 module.exports.test = test
