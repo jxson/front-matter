@@ -1,7 +1,7 @@
 {
   "author": "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
   "name": "front-matter",
-  "description": "Extract YAML front matter from strings",
+  "description": "Extract YAML front matter from a string",
   "keywords": [
     "yaml",
     "front matter",
@@ -17,16 +17,13 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*-test.js"
-  },
-  "engines": {
-    "node": ">=0.6.10"
+    "test": "make test"
   },
   "dependencies": {
     "yaml-js": "^0.1.0"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "tape": "^3.5.0"
   },
   "contributors": [
     "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
