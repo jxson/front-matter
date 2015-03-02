@@ -99,6 +99,27 @@ test('fm(string) - strings with byte order mark', function(t) {
   })
 })
 
+test('fm.test(string) - yaml seperator', function(t) {
+  read('yaml-seperator.md', function(err, data) {
+    t.error(err, 'read(...) should not error')
+    t.equal(fm.test(data), true)
+    t.end()
+  })
+})
+
+test('fm.test(string) - dashes seperator', function(t) {
+  read('dashes-seperator.md', function(err, data) {
+    t.error(err, 'read(...) should not error')
+    t.equal(fm.test(data), true)
+    t.end()
+  })
+})
+
+test('fm.test(string) - no front-matter', function(t) {
+  t.equal(fm.test('no front matter here'), false)
+  t.end()
+})
+
 function read(file, callback){
   var dir =  path.resolve(__dirname, '../examples')
     , file = path.join(dir, file)
