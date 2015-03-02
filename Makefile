@@ -1,20 +1,43 @@
+MAKEFLAGS += --warn-undefined-variables
+PATH := node_modules/.bin:$(PATH)
+SHELL := /bin/bash
 
-VERSION=patch
+.SHELLFLAGS := -eu -o pipefail -c
+.DEFAULT_GOAL := all
+.DELETE_ON_ERROR:
+.SUFFIXES:
 
-release:
-	npm version $(VERSION)
-	git push && git push --tags
-	npm publish
-
-clean:
-	@$(RM) -fr node_modules $(STANDALONE).js
-	@$(RM) -fr npm-debug.log
-
-test: node_modules
-	@npm test
+version ?= patch
 
 node_modules: package.json
 	@npm prune
 	@npm install
+	@touch node_modules
 
-.PHONY: release clean
+.PHONY: clean
+clean:
+	@$(RM) -fr node_modules
+	@$(RM) -fr npm-debug.log
+	@$(RM) -fr coverage
+
+.PHONY: test
+test: node_modules
+	tape test/index.js
+
+.PHONY: release
+release:
+	npm version $(version)
+	git push && git push --tags
+	npm publish
+
+.PHONY: coverage
+coverage: index.js test/index.js node_modules
+	@istanbul cover --report html --print detail ./test/index.js
+	@touch coverage
+
+.PHONY: coveralls
+coveralls: coverage
+	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
+
+.PHONY: travis
+travis: test coveralls
