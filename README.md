@@ -76,15 +76,18 @@ front-matter is an OPEN Source Project so please help out by [reporting bugs](ht
 
 ### Contributors
 
-This module is awesome beacuse of all the folks who helped out:
+This module is awesome because of all the folks who helped out:
 
-* **Jason Campbell**: [github](https://github.com/jxson) - [twitter](https://twitter.com/jxson)
-* **Jordan Santell**: [github](https://github.com/jsantell) - [twitter](https://twitter.com/jsantell)
-* **Kai Davenport**: [github](https://github.com/binocarlos)
-* **Jean-Philippe Monette**: [github](https://github.com/jpmonette) - [twitter](https://twitter.com/jpmonette)
-* **Marc-André Arseneault**: [github](https://github.com/arsnl) - [twitter](https://twitter.com/im_arsnl)
-* **Bret Comnes**: [github](https://github.com/bcomnes) - [bret.io](http://bret.io)
-* **Shinnosuke Watanabe**: [github](https://github.com/shinnn)
+- [Jason Campbell](https://github.com/jxson) - [@jxson](https://twitter.com/jxson)
+- [Jordan Santell](https://github.com/jsantell) - [@jsantell](https://twitter.com/jsantell)
+- [Jean-Philippe Monette](https://github.com/jpmonette) - [@jpmonette](https://twitter.com/jpmonette)
+- [Kai Davenport](https://github.com/binocarlos)
+- [Marc-André Arseneault](https://github.com/arsnl) - [@im_arsnl](https://twitter.com/im_arsnl)
+- [Bret Comnes](https://github.com/bcomnes) - http://bret.io
+- [Shinnosuke Watanabe](https://github.com/shinnn)
+- [Matt Dickens](https://github.com/mpd106)
+- [Rod Knowlton](https://github.com/codelahoma)
+- [Rich DeLauder](https://github.com/FMJaguar)
 
 # LICENSE (MIT)
 
