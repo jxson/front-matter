@@ -5,12 +5,12 @@ var optionalByteOrderMark = '\\ufeff?'
 var pattern = '^('
       + optionalByteOrderMark
       + '((= yaml =)|(---))'
-      + '$([\\s\\S]*?)'
+      + '\\n([\\s\\S]*?)'
       + '\\2'
-      + '$'
+      + '\\n'
       + (process.platform === 'win32' ? '\\r?' : '')
       + '(?:\\n)?)'
-var regex = new RegExp(pattern, 'm')
+var regex = new RegExp(pattern)
 
 module.exports = extractor
 module.exports.test = test

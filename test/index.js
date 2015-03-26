@@ -47,13 +47,6 @@ test('fm(string) - parse yaml delinetead by `= yaml =`', function(t) {
   })
 })
 
-test('fm(string) - string missing front-matter', function(t) {
-  var content = fm('No front matter here')
-
-  t.equal(content.body, 'No front matter here')
-  t.end()
-})
-
 test('fm(string) - string missing body', function(t) {
   read('missing-body.md', function(err, data){
     t.error(err, 'read(...) should not error')
@@ -63,6 +56,32 @@ test('fm(string) - string missing body', function(t) {
     t.equal(content.attributes.title, 'Three dashes marks the spot')
     t.equal(content.attributes.tags.length, 3)
     t.equal(content.body, '')
+    t.end()
+  })
+})
+
+test('fm(string) - string missing front-matter', function(t) {
+  read('missing-front-matter.md', function(err, data){
+    t.error(err, 'read(...) should not error')
+
+    var content = fm(data)
+
+    console.log();
+    console.log();
+    console.log();
+    console.log(content);
+
+    console.log();
+    console.log();
+    console.log();
+
+    t.ok(content.attributes, 'should have `attributes` key')
+    t.ok(content.body, 'should have a `body` key')
+    t.ok(content.body.match('don\'t break'), 'should match body')
+    t.ok(content.body.match('---'), 'should match body')
+    t.ok(content.body.match('Also this shouldn\'t be a problem'),
+      'should match body')
+    t.ok(content.body.match('another string'), 'should match body')
     t.end()
   })
 })
