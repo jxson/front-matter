@@ -66,15 +66,6 @@ test('fm(string) - string missing front-matter', function(t) {
 
     var content = fm(data)
 
-    console.log();
-    console.log();
-    console.log();
-    console.log(content);
-
-    console.log();
-    console.log();
-    console.log();
-
     t.ok(content.attributes, 'should have `attributes` key')
     t.ok(content.body, 'should have a `body` key')
     t.ok(content.body.match('don\'t break'), 'should match body')
