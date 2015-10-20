@@ -9,7 +9,7 @@
 
 This modules does not do any IO (file loading or reading), only extracting yaml front matter from strings.
 
-This concept that was originally introduced to me through the [jeykll][jeykll] blogging system and is pretty useful where you want to be able to easily add metadata to content without the need for a database. YAML is extracted from the the top of a file between matching separators of "---" or "= yaml =".
+This concept that was originally introduced to me through the [jeykll][jeykll] blogging system and is pretty useful where you want to be able to easily add meta-data to content without the need for a database. YAML is extracted from the the top of a file between matching separators of "---" or "= yaml =".
 
 <!-- This is part of a long running project I have been working on where I am splitting out internals of [haiku][haiku] into to separate, more useful and shareable modules. If your in need of a static site generator [check it out][haiku]. -->
 
@@ -29,6 +29,9 @@ So you have a file `example.md`:
     ---
 
     This is some text about some stuff that happened sometime ago
+
+**NOTE:** As of `front-matter@2.0.0` valid front matter is considered to have
+the starting separator on the first line.
 
 Then you can do this:
 
