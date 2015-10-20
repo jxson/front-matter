@@ -5,7 +5,6 @@ var path = require('path')
 var test = require('tape')
 
 test('var fm = require("front-matter")', function(t) {
-  var fm = require('../')
   t.equal(typeof fm, 'function')
   t.end()
 })
@@ -95,6 +94,16 @@ test('fm(string) - strings with byte order mark', function(t) {
 
     t.equal(content.attributes.title, "Relax guy, I'm not hiding any BOMs")
 
+    t.end()
+  })
+})
+
+test('fm(string) - no front matter, markdown with hr', function(t) {
+  read('no-front-matter.md', function(err, data) {
+    t.error(err, 'read should not error');
+
+    var content = fm(data);
+    t.equal(content.body, data);
     t.end()
   })
 })
