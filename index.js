@@ -18,8 +18,12 @@ module.exports.test = test
 function extractor(string) {
   string = string || ''
 
-  if (regex.test(string)) return parse(string)
-  else return { attributes: {}, body: string }
+  var lines = string.split(/(\r?\n)/)
+  if (lines[0] && lines[0].match(/((= yaml =)|(---))/)) {
+    return parse(string)
+  } else {
+    return { attributes: {}, body: string }
+  }
 }
 
 function parse(string) {
