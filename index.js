@@ -1,4 +1,3 @@
-
 var parser = require('yaml-js')
 var seperators = [ '---', '= yaml =']
 var optionalByteOrderMark = '\\ufeff?'
