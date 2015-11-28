@@ -1,4 +1,4 @@
-var parser = require('yaml-js')
+var parser = require('js-yaml')
 var seperators = [ '---', '= yaml =']
 var optionalByteOrderMark = '\\ufeff?'
 var pattern = '^('

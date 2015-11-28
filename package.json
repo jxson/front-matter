@@ -20,7 +20,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "yaml-js": "^0.1.0"
+    "js-yaml": "^3.4.6"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
