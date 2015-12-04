@@ -91,6 +91,7 @@ This module is awesome because of all the folks who helped out:
 - [Matt Dickens](https://github.com/mpd106)
 - [Rod Knowlton](https://github.com/codelahoma)
 - [Rich DeLauder](https://github.com/FMJaguar)
+- [Sean Lang](https://github.com/slang800) - http://slang.cx
 
 # LICENSE (MIT)
 
