@@ -92,6 +92,7 @@ This module is awesome because of all the folks who helped out:
 - [Rod Knowlton](https://github.com/codelahoma)
 - [Rich DeLauder](https://github.com/FMJaguar)
 - [Sean Lang](https://github.com/slang800) - http://slang.cx
+- [Benjamin Tan](https://github.com/d10) - https://d10.github.io/
 
 # LICENSE (MIT)
 
