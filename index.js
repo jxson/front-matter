@@ -1,9 +1,8 @@
 var parser = require('js-yaml')
-var seperators = [ '---', '= yaml =']
 var optionalByteOrderMark = '\\ufeff?'
 var pattern = '^('
       + optionalByteOrderMark
-      + '((= yaml =)|(---))'
+      + '(= yaml =|---)'
       + '$([\\s\\S]*?)'
       + '\\2'
       + '$'
@@ -18,7 +17,7 @@ function extractor(string) {
   string = string || ''
 
   var lines = string.split(/(\r?\n)/)
-  if (lines[0] && lines[0].match(/((= yaml =)|(---))/)) {
+  if (lines[0] && /= yaml =|---/.test(lines[0])) {
     return parse(string)
   } else {
     return { attributes: {}, body: string }
