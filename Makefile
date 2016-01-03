@@ -31,12 +31,12 @@ release:
 	npm publish
 
 .PHONY: coverage
-coverage: index.js test/index.js node_modules
+coverage: node_modules index.js test/index.js node_modules
 	@istanbul cover --report html --print detail ./test/index.js
 	@touch coverage
 
 .PHONY: coveralls
-coveralls: coverage
+coveralls: node_modules coverage
 	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
 
 .PHONY: travis
