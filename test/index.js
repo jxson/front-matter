@@ -141,6 +141,38 @@ test('fm.test(string) - no front-matter', function(t) {
   t.end()
 })
 
+test('Supports live updating', function(t) {
+  var seperator = '---'
+  var string = ''
+  for (var i = 0; i < seperator.length; i++) {
+    string += seperator[i]
+
+    try {
+      fm(string)
+    } catch (e) {
+      t.error(e)
+    }
+  }
+
+  string += '\n'
+  string += 'foo: bar'
+
+  var content = fm(string)
+
+  t.same(content, {
+    body: string
+  })
+
+  string += '\n---\n'
+  content = fm(string)
+  t.same(content, {
+    attributes: { foo: 'bar' },
+    body: ''
+  })
+
+  t.end()
+})
+
 function read(file, callback){
   var dir =  path.resolve(__dirname, '../examples')
     , file = path.join(dir, file)
