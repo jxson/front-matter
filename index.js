@@ -31,6 +31,7 @@ function parse(string) {
 
   if (! match) {
     return {
+      attributes: {},
       body: string
     }
   }

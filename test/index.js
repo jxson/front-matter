@@ -160,6 +160,7 @@ test('Supports live updating', function(t) {
   var content = fm(string)
 
   t.same(content, {
+    attributes: {},
     body: string
   })
 
