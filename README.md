@@ -1,11 +1,10 @@
-
 # front-matter
 
-[![NPM](https://nodei.co/npm/front-matter.png)](https://nodei.co/npm/front-matter/)
+[![NPM](https://nodei.co/npm/front-matter.svg)](https://nodei.co/npm/front-matter/)
 
 ## Extract [YAML][yaml] front matter from strings.
 
-[![build status](https://secure.travis-ci.org/jxson/front-matter.png)](http://travis-ci.org/jxson/front-matter) [![Coverage Status](https://coveralls.io/repos/jxson/front-matter/badge.svg?branch=master)](https://coveralls.io/r/jxson/front-matter?branch=master) [![Dependency Status](https://david-dm.org/jxson/front-matter.png)](https://david-dm.org/jxson/front-matter)
+[![build status](https://secure.travis-ci.org/jxson/front-matter.svg)](http://travis-ci.org/jxson/front-matter) [![Coverage Status](https://coveralls.io/repos/jxson/front-matter/badge.svg?branch=master)](https://coveralls.io/r/jxson/front-matter?branch=master) [![Dependency Status](https://david-dm.org/jxson/front-matter.svg)](https://david-dm.org/jxson/front-matter)
 
 This modules does not do any IO (file loading or reading), only extracting yaml front matter from strings.
 
