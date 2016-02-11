@@ -45,6 +45,23 @@ test('fm(string) - parse yaml delinetead by `= yaml =`', function(t) {
   })
 })
 
+test('fm(string) - parse yaml ended by `...`', function(t) {
+  read('dots-ending.md', function(err, data){
+    t.error(err, 'read(...) should not error')
+
+    var content = fm(data)
+    var meta = content.attributes
+    var body = content.body
+
+    t.equal(meta.title, 'Example with dots document ending')
+    t.equal(meta.description, 'Just an example of using `...`')
+    t.ok(body.match('It shouldn\'t break with ...'),
+      'should match body')
+
+    t.end()
+  })
+})
+
 test('fm(string) - string missing front-matter', function(t) {
   var content = fm('No front matter here')
 
