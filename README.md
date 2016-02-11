@@ -47,8 +47,8 @@ Then you can do this:
 
 And end up with an object like this:
 
-    { 
-        attributes: { 
+    {
+        attributes: {
             title: 'Just hack\'n',
             description: 'Nothing to see here'
         },
@@ -95,6 +95,8 @@ This module is awesome because of all the folks who helped out:
 - [Sean Lang](https://github.com/slang800) - http://slang.cx
 - [Benjamin Tan](https://github.com/d10) - https://d10.github.io/
 - [Kenneth Lim](https://github.com/kenlimmj) - https://kenlimmj.com
+- [Cameron Moy](https://github.com/camoy)
+- [Fernando Montoya](https://github.com/montogeek) - https://montogeek.com
 
 # LICENSE (MIT)
 
