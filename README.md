@@ -47,10 +47,12 @@ Then you can do this:
 
 And end up with an object like this:
 
-    { attributes: { title: 'Just hack\'n'
-      , description: 'Nothing to see here'
-      }
-    , body: 'This is some text about some stuff that happened sometime ago'
+    { 
+        attributes: { 
+            title: 'Just hack\'n',
+            description: 'Nothing to see here'
+        },
+        body: 'This is some text about some stuff that happened sometime ago'
     }
 
 # Methods
