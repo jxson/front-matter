@@ -1,6 +1,6 @@
 # front-matter
 
-[![NPM](https://nodei.co/npm/front-matter.svg)](https://nodei.co/npm/front-matter/)
+[![NPM](https://nodei.co/npm/front-matter.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/front-matter/)
 
 ## Extract [YAML][yaml] front matter from strings.
 
