@@ -1,13 +1,13 @@
 var parser = require('js-yaml')
 var optionalByteOrderMark = '\\ufeff?'
-var pattern = '^('
-      + optionalByteOrderMark
-      + '(= yaml =|---)'
-      + '$([\\s\\S]*?)'
-      + '(?:\\2|\\.\\.\\.)'
-      + '$'
-      + (process.platform === 'win32' ? '\\r?' : '')
-      + '(?:\\n)?)'
+var pattern = '^(' +
+  optionalByteOrderMark +
+  '(= yaml =|---)' +
+  '$([\\s\\S]*?)' +
+  '(?:\\2|\\.\\.\\.)' +
+  '$' +
+  (process.platform === 'win32' ? '\\r?' : '') +
+  '(?:\\n)?)'
 // NOTE: If this pattern uses the 'g' flag the `regex` variable definition will
 // need to be moved down into the functions that use it.
 var regex = new RegExp(pattern, 'm')
@@ -15,7 +15,7 @@ var regex = new RegExp(pattern, 'm')
 module.exports = extractor
 module.exports.test = test
 
-function extractor(string) {
+function extractor (string) {
   string = string || ''
 
   var lines = string.split(/(\r?\n)/)
@@ -26,10 +26,10 @@ function extractor(string) {
   }
 }
 
-function parse(string) {
+function parse (string) {
   var match = regex.exec(string)
 
-  if (! match) {
+  if (!match) {
     return {
       attributes: {},
       body: string
@@ -43,7 +43,7 @@ function parse(string) {
   return { attributes: attributes, body: body }
 }
 
-function test(string){
+function test (string) {
   string = string || ''
 
   return regex.test(string)

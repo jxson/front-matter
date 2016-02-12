@@ -20,8 +20,16 @@ clean:
 	@$(RM) -fr npm-debug.log
 	@$(RM) -fr coverage
 
+.PHONY: fmt
+fmt: node_modules
+	@standard-format -w
+
+.PHONY: lint
+lint: node_modules
+	@standard
+
 .PHONY: test
-test: node_modules
+test: lint node_modules
 	tape test/index.js
 
 .PHONY: release
