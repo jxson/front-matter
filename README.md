@@ -1,12 +1,13 @@
 # front-matter
+[![build][build-img]][build-url]
+[![coverage][coverage-img]][coverage-url]
+[![npm][npm-img]][npm-url]
+[![github][github-img]][github-url]
 
-[![NPM](https://nodei.co/npm/front-matter.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/front-matter/)
+> Extract meta data (front-matter) from documents.
 
-## Extract [YAML][yaml] front matter from strings.
-
-[![build status](https://secure.travis-ci.org/jxson/front-matter.svg)](http://travis-ci.org/jxson/front-matter) [![Coverage Status](https://coveralls.io/repos/jxson/front-matter/badge.svg?branch=master)](https://coveralls.io/r/jxson/front-matter?branch=master) [![Dependency Status](https://david-dm.org/jxson/front-matter.svg)](https://david-dm.org/jxson/front-matter)
-
-This modules does not do any IO (file loading or reading), only extracting yaml front matter from strings.
+This modules does not do any IO (file loading or reading), only extracting and
+parsing front matter from strings.
 
 This concept that was originally introduced to me through the [jeykll][jeykll] blogging system and is pretty useful where you want to be able to easily add meta-data to content without the need for a database. YAML is extracted from the the top of a file between matching separators of "---" or "= yaml =". It will also extract YAML between a separator and "...".
 
@@ -78,11 +79,19 @@ Returns `true` or `false`
 
 front-matter is an OPEN Source Project so please help out by [reporting bugs](http://github.com/jxson/front-matter/issues) or [forking and opening pull](https://github.com/jxson/front-matter) requests when possible.
 
-### Contributors
+![standard][standard-img]
 
-This module is awesome because of all the folks who helped out:
+All code is linted/formatted using [standard][standard-url] style, any non-conforming code can be automatically formatted using the the fmt make task: `make fmt`.
 
+## Maintainers
+
+- [Adrian Gimenez](https://github.com/axdg)
 - [Jason Campbell](https://github.com/jxson) - [@jxson](https://twitter.com/jxson)
+
+## Contributors
+
+This module is awesome because of all the folks who submitted pull requests:
+
 - [Jordan Santell](https://github.com/jsantell) - [@jsantell](https://twitter.com/jsantell)
 - [Jean-Philippe Monette](https://github.com/jpmonette) - [@jpmonette](https://twitter.com/jpmonette)
 - [Kai Davenport](https://github.com/binocarlos)
@@ -113,3 +122,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [haiku]: http://haiku.io
 [npm]: http://npmjs.org
 [jeykll]: https://github.com/mojombo/jekyll
+[coverage-img]: https://img.shields.io/coveralls/jxson/front-matter.svg
+[coverage-url]: https://coveralls.io/r/jxson/front-matter?branch=master
+[build-img]: https://img.shields.io/travis/jxson/front-matter.svg
+[build-url]: http://travis-ci.org/jxson/front-matter
+[npm-img]: https://img.shields.io/npm/dm/front-matter.svg
+[npm-url]: https://npmjs.org/package/standard
+[github-img]: https://img.shields.io/github/stars/jxson/front-matter.svg?style=social&label=Star
+[github-url]: https://github.com/jxson/front-matter/
+[standard-img]: https://cdn.rawgit.com/feross/standard/master/badge.svg
+[standard-url]: http://npmjs.com/package/standard
