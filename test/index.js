@@ -87,11 +87,12 @@ test('fm(string) - wrapped test in yaml', function (t) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
-    var folded = [ 'There once was a man from Darjeeling'
-      , 'Who got on a bus bound for Ealing'
-      , '    It said on the door'
-      , '    "Please don\'t spit on the floor"'
-      , 'So he carefully spat on the ceiling\n'
+    var folded = [
+      'There once was a man from Darjeeling',
+      'Who got on a bus bound for Ealing',
+      '    It said on the door',
+      '    "Please don\'t spit on the floor"',
+      'So he carefully spat on the ceiling\n'
     ].join('\n')
 
     t.equal(content.attributes['folded-text'], folded)
@@ -191,9 +192,9 @@ test('Supports live updating', function (t) {
   t.end()
 })
 
-function read (file, callback) {
-  var dir = path.resolve(__dirname, '../examples'),
-    file = path.join(dir, file)
+function read (relative, callback) {
+  var directory = path.resolve(__dirname, '../examples')
+  var resolved = path.join(directory, relative)
 
-  fs.readFile(file, 'utf8', callback)
+  fs.readFile(resolved, 'utf8', callback)
 }

@@ -22,11 +22,11 @@ clean:
 
 .PHONY: fmt
 fmt: node_modules
-	standard-format -w
+	@standard-format -w
 
 .PHONY: lint
 lint: node_modules
-	standard
+	@standard
 
 .PHONY: test
 test: lint node_modules
