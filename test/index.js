@@ -192,6 +192,31 @@ test('Supports live updating', function (t) {
   t.end()
 })
 
+test('fm.stringify(obj) - stringify yaml without front-matter', function (t) {
+  var data = 'no front matter here'
+  var obj = { attributes: {}, body: data }
+  t.equal(fm.stringify(obj), 'no front matter here', 'fm.stringify(obj) should equal data')
+  t.end()
+})
+
+test('fm.stringify(obj) - stringify yaml delinetead by `---`', function (t) {
+  read('dashes-seperator.md', function (err, data) {
+    t.error(err, 'read(...) should not error')
+    t.equal(fm.stringify(fm(data)), data, 'fm.stringify(fm(data)) should equal data')
+
+    t.end()
+  })
+})
+
+test('fm.stringify(obj) - stringify yaml delinetead by `= yaml =`', function (t) {
+  read('dashes-seperator.md', function (err, data) {
+    t.error(err, 'read(...) should not error')
+    t.ok(fm.stringify(fm(data), { scope: '= yaml =' }).match(/^= yaml =\s/), 'should begain with = yaml =')
+
+    t.end()
+  })
+})
+
 function read (relative, callback) {
   var directory = path.resolve(__dirname, '../examples')
   var resolved = path.join(directory, relative)

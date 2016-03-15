@@ -75,6 +75,31 @@ Returns `true` or `false`
 
     fm.test(string) #=> true || false
 
+# fm.parse(alias: fm)
+# fm.stringify(obj[, opt])
+
+Stringify a object to yaml. eg:
+
+
+    fm.stringify({
+        attributes: {
+            title: 'Just hack\'n',
+            description: 'Nothing to see here'
+        },
+        body: '\nThis is some text about some stuff that happened sometime ago'
+    })
+
+
+will output:
+
+    ---
+    title: "Just hack'n"
+    description: Nothing to see here
+    ---
+
+    This is some text about some stuff that happened sometime ago
+
+
 # Contributing
 
 front-matter is an OPEN Source Project so please help out by [reporting bugs](http://github.com/jxson/front-matter/issues) or [forking and opening pull](https://github.com/jxson/front-matter) requests when possible.
