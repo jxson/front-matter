@@ -1,3 +1,4 @@
+var os = require('os')
 var parser = require('js-yaml')
 var optionalByteOrderMark = '\\ufeff?'
 var pattern = '^(' +
@@ -14,6 +15,8 @@ var regex = new RegExp(pattern, 'm')
 
 module.exports = extractor
 module.exports.test = test
+module.exports.parse = extractor
+module.exports.stringify = stringify
 
 function extractor (string) {
   string = string || ''
@@ -47,4 +50,21 @@ function test (string) {
   string = string || ''
 
   return regex.test(string)
+}
+
+function stringify (obj, opt) {
+  obj = obj || {}
+  opt = opt || {}
+  var attributes = obj.attributes || {}
+  var body = obj.body || {}
+  var scope = opt.scope || '---'
+
+  if (Object.keys(attributes).length === 0) {
+    return body
+  }
+
+  var yaml = parser.dump(attributes)
+  yaml = scope + os.EOL + yaml + scope + os.EOL + body
+
+  return yaml
 }
