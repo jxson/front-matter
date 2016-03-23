@@ -1,0 +1,5 @@
+ui: tape
+scripts:
+  - https://cdn.rawgit.com/jquery/esprima/2.7.2/esprima.js
+browserify:
+  - transform: brfs
