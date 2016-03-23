@@ -9,7 +9,7 @@ test('var fm = require("front-matter")', function (t) {
 })
 
 test('fm(string) - parse yaml delinetead by `---`', function (t) {
-  read('dashes-seperator.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/dashes-seperator.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -29,7 +29,7 @@ test('fm(string) - parse yaml delinetead by `---`', function (t) {
 })
 
 test('fm(string) - parse yaml delinetead by `= yaml =`', function (t) {
-  read('yaml-seperator.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/yaml-seperator.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -46,7 +46,7 @@ test('fm(string) - parse yaml delinetead by `= yaml =`', function (t) {
 })
 
 test('fm(string) - parse yaml ended by `...`', function (t) {
-  read('dots-ending.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/dots-ending.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -70,7 +70,7 @@ test('fm(string) - string missing front-matter', function (t) {
 })
 
 test('fm(string) - string missing body', function (t) {
-  read('missing-body.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/missing-body.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -83,7 +83,7 @@ test('fm(string) - string missing body', function (t) {
 })
 
 test('fm(string) - wrapped test in yaml', function (t) {
-  read('wrapped-text.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/wrapped-text.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -104,7 +104,7 @@ test('fm(string) - wrapped test in yaml', function (t) {
 })
 
 test('fm(string) - strings with byte order mark', function (t) {
-  read('bom.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/bom.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
 
     var content = fm(data)
@@ -116,7 +116,7 @@ test('fm(string) - strings with byte order mark', function (t) {
 })
 
 test('fm(string) - no front matter, markdown with hr', function (t) {
-  read('no-front-matter.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/no-front-matter.md', 'utf8', function (err, data) {
     t.error(err, 'read should not error')
 
     var content = fm(data)
@@ -126,7 +126,7 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
 })
 
 test('fm(string) - complex yaml', function (t) {
-  read('complex-yaml.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/complex-yaml.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
     var content = fm(data)
     t.ok(content.attributes, 'should have `attributes` key')
@@ -139,7 +139,7 @@ test('fm(string) - complex yaml', function (t) {
 })
 
 test('fm.test(string) - yaml seperator', function (t) {
-  read('yaml-seperator.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/yaml-seperator.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
     t.equal(fm.test(data), true)
     t.end()
@@ -147,7 +147,7 @@ test('fm.test(string) - yaml seperator', function (t) {
 })
 
 test('fm.test(string) - dashes seperator', function (t) {
-  read('dashes-seperator.md', function (err, data) {
+  fs.readFile(__dirname + '/../examples/dashes-seperator.md', 'utf8', function (err, data) {
     t.error(err, 'read(...) should not error')
     t.equal(fm.test(data), true)
     t.end()
@@ -191,10 +191,3 @@ test('Supports live updating', function (t) {
 
   t.end()
 })
-
-function read (relative, callback) {
-  var directory = path.resolve(__dirname, '../examples')
-  var resolved = path.join(directory, relative)
-
-  fs.readFile(resolved, 'utf8', callback)
-}

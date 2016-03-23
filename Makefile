@@ -32,6 +32,10 @@ lint: node_modules
 test: lint node_modules
 	tape test/index.js
 
+.PHONY: browser
+browser:
+	zuul --local 8080 --ui tape ${ZUUL_OPT} -- test/index.js 
+
 .PHONY: release
 release:
 	npm version $(version)
@@ -48,4 +52,4 @@ coveralls: node_modules coverage
 	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
 
 .PHONY: travis
-travis: test coveralls
+travis: test coveralls || test browser
