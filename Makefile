@@ -56,4 +56,4 @@ coveralls: node_modules coverage
 	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
 
 .PHONY: travis
-travis: test zuul coveralls
+travis: test coveralls
