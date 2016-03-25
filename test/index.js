@@ -9,57 +9,66 @@ test('var fm = require("front-matter")', function (t) {
 })
 
 test('fm(string) - parse yaml delinetead by `---`', function (t) {
-  fs.readFile(__dirname + '/../examples/dashes-seperator.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/dashes-seperator.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
+      var content = fm(data)
 
-    t.ok(content.attributes, 'should have `attributes` key')
-    t.equal(content.attributes.title, 'Three dashes marks the spot')
-    t.equal(content.attributes.tags.length, 3)
+      t.ok(content.attributes, 'should have `attributes` key')
+      t.equal(content.attributes.title, 'Three dashes marks the spot')
+      t.equal(content.attributes.tags.length, 3)
 
-    t.ok(content.body, 'should have a `body` key')
-    t.ok(content.body.match("don't break"), 'should match body')
-    t.ok(content.body.match('---'), 'should match body')
-    t.ok(content.body.match("Also this shouldn't be a problem"),
-      'should match body')
+      t.ok(content.body, 'should have a `body` key')
+      t.ok(content.body.match("don't break"), 'should match body')
+      t.ok(content.body.match('---'), 'should match body')
+      t.ok(content.body.match("Also this shouldn't be a problem"),
+        'should match body')
 
-    t.end()
-  })
+      t.end()
+    })
 })
 
 test('fm(string) - parse yaml delinetead by `= yaml =`', function (t) {
-  fs.readFile(__dirname + '/../examples/yaml-seperator.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/yaml-seperator.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
-    var meta = content.attributes
-    var body = content.body
+      var content = fm(data)
+      var meta = content.attributes
+      var body = content.body
 
-    t.equal(meta.title, "I couldn't think of a better name")
-    t.equal(meta.description, 'Just an example of using `= yaml =`')
-    t.ok(body.match('Plays nice with markdown syntax highlighting'),
-      'should match body')
+      t.equal(meta.title, "I couldn't think of a better name")
+      t.equal(meta.description, 'Just an example of using `= yaml =`')
+      t.ok(body.match('Plays nice with markdown syntax highlighting'),
+        'should match body')
 
-    t.end()
-  })
+      t.end()
+    })
 })
 
 test('fm(string) - parse yaml ended by `...`', function (t) {
-  fs.readFile(__dirname + '/../examples/dots-ending.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/dots-ending.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
-    var meta = content.attributes
-    var body = content.body
+      var content = fm(data)
+      var meta = content.attributes
+      var body = content.body
 
-    t.equal(meta.title, 'Example with dots document ending')
-    t.equal(meta.description, 'Just an example of using `...`')
-    t.ok(body.match("It shouldn't break with ..."),
-      'should match body')
+      t.equal(meta.title, 'Example with dots document ending')
+      t.equal(meta.description, 'Just an example of using `...`')
+      t.ok(body.match("It shouldn't break with ..."),
+        'should match body')
 
-    t.end()
-  })
+      t.end()
+    })
 })
 
 test('fm(string) - string missing front-matter', function (t) {
@@ -70,88 +79,109 @@ test('fm(string) - string missing front-matter', function (t) {
 })
 
 test('fm(string) - string missing body', function (t) {
-  fs.readFile(__dirname + '/../examples/missing-body.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/missing-body.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
+      var content = fm(data)
 
-    t.equal(content.attributes.title, 'Three dashes marks the spot')
-    t.equal(content.attributes.tags.length, 3)
-    t.equal(content.body, '')
-    t.end()
-  })
+      t.equal(content.attributes.title, 'Three dashes marks the spot')
+      t.equal(content.attributes.tags.length, 3)
+      t.equal(content.body, '')
+      t.end()
+    })
 })
 
 test('fm(string) - wrapped test in yaml', function (t) {
-  fs.readFile(__dirname + '/../examples/wrapped-text.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/wrapped-text.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
-    var folded = [
-      'There once was a man from Darjeeling',
-      'Who got on a bus bound for Ealing',
-      '    It said on the door',
-      '    "Please don\'t spit on the floor"',
-      'So he carefully spat on the ceiling\n'
-    ].join('\n')
+      var content = fm(data)
+      var folded = [
+        'There once was a man from Darjeeling',
+        'Who got on a bus bound for Ealing',
+        '    It said on the door',
+        '    "Please don\'t spit on the floor"',
+        'So he carefully spat on the ceiling\n'
+      ].join('\n')
 
-    t.equal(content.attributes['folded-text'], folded)
-    t.ok(content.body.match('Some crazy stuff going on up there'),
-      'should match body')
+      t.equal(content.attributes['folded-text'], folded)
+      t.ok(content.body.match('Some crazy stuff going on up there'),
+        'should match body')
 
-    t.end()
-  })
+      t.end()
+    })
 })
 
 test('fm(string) - strings with byte order mark', function (t) {
-  fs.readFile(__dirname + '/../examples/bom.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/bom.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
 
-    var content = fm(data)
+      var content = fm(data)
 
-    t.equal(content.attributes.title, "Relax guy, I'm not hiding any BOMs")
+      t.equal(content.attributes.title, "Relax guy, I'm not hiding any BOMs")
 
-    t.end()
-  })
+      t.end()
+    })
 })
 
 test('fm(string) - no front matter, markdown with hr', function (t) {
-  fs.readFile(__dirname + '/../examples/no-front-matter.md', 'utf8', function (err, data) {
-    t.error(err, 'read should not error')
+  fs.readFile(
+    path.resolve(__dirname, '../examples/no-front-matter.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read should not error')
 
-    var content = fm(data)
-    t.equal(content.body, data)
-    t.end()
-  })
+      var content = fm(data)
+      t.equal(content.body, data)
+      t.end()
+    })
 })
 
 test('fm(string) - complex yaml', function (t) {
-  fs.readFile(__dirname + '/../examples/complex-yaml.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
-    var content = fm(data)
-    t.ok(content.attributes, 'should have `attributes` key')
-    t.equal(content.attributes.title, 'This is a title!')
-    t.equal(content.attributes.contact, null)
-    t.equal(content.attributes.match.toString(), '/pattern/gim')
-    t.equal(typeof content.attributes.run, 'function')
-    t.end()
-  })
+  fs.readFile(
+    path.resolve(__dirname, '../examples/complex-yaml.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
+      var content = fm(data)
+      t.ok(content.attributes, 'should have `attributes` key')
+      t.equal(content.attributes.title, 'This is a title!')
+      t.equal(content.attributes.contact, null)
+      t.equal(content.attributes.match.toString(), '/pattern/gim')
+      t.equal(typeof content.attributes.run, 'function')
+      t.end()
+    })
 })
 
 test('fm.test(string) - yaml seperator', function (t) {
-  fs.readFile(__dirname + '/../examples/yaml-seperator.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
-    t.equal(fm.test(data), true)
-    t.end()
-  })
+  fs.readFile(
+    path.resolve(__dirname, '../examples/yaml-seperator.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
+      t.equal(fm.test(data), true)
+      t.end()
+    })
 })
 
 test('fm.test(string) - dashes seperator', function (t) {
-  fs.readFile(__dirname + '/../examples/dashes-seperator.md', 'utf8', function (err, data) {
-    t.error(err, 'read(...) should not error')
-    t.equal(fm.test(data), true)
-    t.end()
-  })
+  fs.readFile(
+    path.resolve(__dirname, '../examples/dashes-seperator.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
+      t.equal(fm.test(data), true)
+      t.end()
+    })
 })
 
 test('fm.test(string) - no front-matter', function (t) {
