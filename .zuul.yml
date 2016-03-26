@@ -5,15 +5,13 @@ browsers:
   - name: chrome
     version: latest
   - name: firefox
-    version: latest
+    version: 25..latest
   - name: ie
-    version: latest
+    version: 9..latest
   - name: iphone
     version: latest
   - name: safari
-    version: latest
-  - name: firefox
-    version: latest
+    version: 6..latest
   - name: microsoftedge
     version: latest
   - name: android

@@ -6,6 +6,7 @@
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/jxson.svg)](https://saucelabs.com/u/jxson)
 
+
 > Extract meta data (front-matter) from documents.
 
 This modules does not do any IO (file loading or reading), only extracting and
