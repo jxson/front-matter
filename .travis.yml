@@ -1,13 +1,12 @@
 sudo: false
 language: node_js
 node_js:
-- stable
-- 5
-- 4
-- iojs
-- 0.12
-- 0.11
-- 0.1
+  - stable
+  - 4
+  - iojs
+  - 0.12
+  - 0.11
+  - 0.1
 before_install:
 - npm install -g npm
 env:
@@ -15,4 +14,20 @@ env:
     - secure: he3kGOmSy6s97OdYRUq+k13w2WfIxzKfuDVysMfjOEV1U7YCq6tVeA6rm37yuyyaN3776he/fvPcK1Jd+FNfm8hzJMEu6QHqSd+Ri+q/32P+aXcEq2MEPMdsDAUpFqjT2p7BDPqH4a8DcJ0p48iXP+H2K3+HBaXNrneNLnU+6I8=
     - secure: OrRhONJzYW82KgMJbARL7Xyw1zuVc+2/t2l7Kv/gCzW0XeDyxK6caQh4RK1eprNw7dSmxSrTrzfmYKMvshu8PPJFKKDcXomYlkGLTUDezQkocm+turucDFvQPKtw23WG7rOeCLwbqXFJ0v3o8NwAsQuujpre/8k2o80icxSwrtg=
     - secure: PQvBYiC1DkO1yIjdSQemAjl8hjSunzI2M1tztzjmXy8Q7dAUVG7xpckXo+YEZte0scrPpImXPmBJYJFpHDI9fjD5PcYhy5j9B1EIHezujhdpzR2ZkNbUmBQFTOSvseJ/cbs/0nUrxsyEWjnUVqaete4n0mTu/hqk0G5sp9NA9nc=
+  matrix:
+    - TEST=node
+    - TEST=browser
 script: make travis
+# Only run browser tests on stable matrix
+matrix:
+  exclude:
+      - node_js: 4
+        env: TEST=browser
+      - node_js: iojs
+        env: TEST=browser
+      - node_js: 0.12
+        env: TEST=browser
+      - node_js: 0.11
+        env: TEST=browser
+      - node_js: 0.1
+        env: TEST=browser
