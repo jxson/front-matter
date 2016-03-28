@@ -157,7 +157,6 @@ test('fm(string) - complex yaml', function (t) {
       t.equal(content.attributes.title, 'This is a title!')
       t.equal(content.attributes.contact, null)
       t.equal(content.attributes.match.toString(), '/pattern/gim')
-      t.equal(typeof content.attributes.run, 'function')
       t.end()
     })
 })
