@@ -1,5 +1,5 @@
 ui: tape
-concurency: 2
+concurrency: 1
 browserify:
   - transform: brfs
 browsers:

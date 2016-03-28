@@ -6,8 +6,6 @@
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/front-matter.svg)](https://saucelabs.com/u/front-matter)
 
-
-
 > Extract meta data (front-matter) from documents.
 
 This modules does not do any IO (file loading or reading), only extracting and
