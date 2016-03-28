@@ -108,6 +108,7 @@ This module is awesome because of all the folks who submitted pull requests:
 - [Kenneth Lim](https://github.com/kenlimmj) - https://kenlimmj.com
 - [Cameron Moy](https://github.com/camoy)
 - [Fernando Montoya](https://github.com/montogeek) - https://montogeek.com
+- [Martin Heidegger](https://github.com/martinheidegger)
 
 # LICENSE (MIT)
 
