@@ -61,7 +61,8 @@ coverage: node_modules index.js test/index.js node_modules
 
 .PHONY: coveralls
 coveralls: node_modules coverage
-	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
+	@istanbul report lcov
+	(cat coverage/lcov.info | coveralls) || exit 0
 
 .PHONY: travis
 travis: test coveralls
