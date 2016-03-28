@@ -4,7 +4,8 @@
 [![npm][npm-img]][npm-url]
 [![github][github-img]][github-url]
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/jxson.svg)](https://saucelabs.com/u/jxson)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/front-matter.svg)](https://saucelabs.com/u/front-matter)
+
 
 
 > Extract meta data (front-matter) from documents.

@@ -1,17 +1,18 @@
 ui: tape
+concurency: 2
 browserify:
   - transform: brfs
 browsers:
   - name: chrome
     version: latest
   - name: firefox
-    version: 25..latest
+    version: latest
   - name: ie
-    version: 9..latest
+    version: latest
   - name: iphone
     version: latest
   - name: safari
-    version: 6..latest
+    version: latest
   - name: microsoftedge
     version: latest
   - name: android

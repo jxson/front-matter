@@ -7,6 +7,7 @@ SHELL := /bin/bash
 .DELETE_ON_ERROR:
 .SUFFIXES:
 
+TEST ?= node
 version ?= patch
 
 node_modules: package.json
@@ -29,15 +30,22 @@ lint: node_modules
 	@standard
 
 .PHONY: test
-test: lint node_modules
+test: lint
+	@if [ "$(TEST)" = "browser" ]; \
+		then make test-browser; \
+		else make test-node; \
+	fi
+
+.PHONY: test-node
+test-node: node_modules
 	tape test/index.js
+
+.PHONY: test-browser
+test-browser: node_modules
+	zuul -- test
 
 .PHONY: zuul
 zuul: node_modules
-	zuul -- test
-
-.PHONY: zuul-local
-zuul-local:
 	zuul --local 8080 --ui tape -- test/index.js
 
 .PHONY: release
@@ -56,4 +64,4 @@ coveralls: node_modules coverage
 	@istanbul report lcov && (cat coverage/lcov.info | coveralls)
 
 .PHONY: travis
-travis: test zuul coveralls
+travis: test coveralls
