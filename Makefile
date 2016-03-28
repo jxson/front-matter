@@ -42,7 +42,7 @@ test-node: node_modules
 
 .PHONY: test-browser
 test-browser: node_modules
-	zuul -- test
+	zuul -- test/index.js
 
 .PHONY: zuul
 zuul: node_modules
