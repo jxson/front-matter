@@ -4,6 +4,8 @@
 [![npm][npm-img]][npm-url]
 [![github][github-img]][github-url]
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/front-matter.svg)](https://saucelabs.com/u/front-matter)
+
 > Extract meta data (front-matter) from documents.
 
 This modules does not do any IO (file loading or reading), only extracting and
@@ -106,6 +108,7 @@ This module is awesome because of all the folks who submitted pull requests:
 - [Kenneth Lim](https://github.com/kenlimmj) - https://kenlimmj.com
 - [Cameron Moy](https://github.com/camoy)
 - [Fernando Montoya](https://github.com/montogeek) - https://montogeek.com
+- [Martin Heidegger](https://github.com/martinheidegger)
 
 # LICENSE (MIT)
 

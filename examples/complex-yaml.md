@@ -12,7 +12,6 @@ pets:
 - dog
 - bat
 match: !!js/regexp /pattern/gim
-run: !!js/function function() { }
 
 
 
