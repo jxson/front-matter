@@ -49,7 +49,7 @@ zuul: node_modules
 	zuul --local 8080 --ui tape -- test/index.js
 
 .PHONY: release
-release:
+release: test
 	npm version $(version)
 	git push && git push --tags
 	npm publish
