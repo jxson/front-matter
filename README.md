@@ -127,7 +127,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [jeykll]: https://github.com/mojombo/jekyll
 [coverage-img]: https://img.shields.io/coveralls/jxson/front-matter.svg
 [coverage-url]: https://coveralls.io/r/jxson/front-matter?branch=master
-[build-img]: https://img.shields.io/travis/jxson/front-matter.svg
+[build-img]: https://img.shields.io/travis/jxson/front-matter/master.svg
 [build-url]: http://travis-ci.org/jxson/front-matter
 [npm-img]: https://img.shields.io/npm/dm/front-matter.svg
 [npm-url]: https://npmjs.org/package/standard
