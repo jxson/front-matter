@@ -40,7 +40,7 @@ function parse (string) {
   var attributes = parser.load(yaml) || {}
   var body = string.replace(match[0], '')
 
-  return { attributes: attributes, body: body }
+  return { attributes: attributes, body: body, yaml: yaml }
 }
 
 function test (string) {

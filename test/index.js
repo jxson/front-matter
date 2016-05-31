@@ -27,6 +27,10 @@ test('fm(string) - parse yaml delinetead by `---`', function (t) {
       t.ok(content.body.match("Also this shouldn't be a problem"),
         'should match body')
 
+      t.ok(content.yaml, 'should have a `yaml` key')
+      t.ok(content.yaml.match('title: Three dashes marks the spot'), 'should match yaml')
+      t.ok(content.yaml.match('expaned-description: with some --- crazy stuff in it'), 'should match yaml')
+
       t.end()
     })
 })
@@ -215,7 +219,8 @@ test('Supports live updating', function (t) {
   content = fm(string)
   t.same(content, {
     attributes: { foo: 'bar' },
-    body: ''
+    body: '',
+    yaml: 'foo: bar'
   })
 
   t.end()
