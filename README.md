@@ -56,7 +56,7 @@ And end up with an object like this:
             description: 'Nothing to see here'
         },
         body: '\nThis is some text about some stuff that happened sometime ago',
-        yaml: 'title: Just hack\'n\ndescription: Nothing to see here'
+        frontmatter: 'title: Just hack\'n\ndescription: Nothing to see here'
     }
 
 # Methods
@@ -69,7 +69,7 @@ Return a `content` object with two properties:
 
 * `content.attributes` contains the extracted yaml attributes in json form
 * `content.body` contains the string contents below the yaml separators
-* `content.yaml` contains the original yaml string contents
+* `content.frontmatter` contains the original yaml string contents
 
 # fm.test(string)
 
