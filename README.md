@@ -111,6 +111,7 @@ This module is awesome because of all the folks who submitted pull requests:
 - [Cameron Moy](https://github.com/camoy)
 - [Fernando Montoya](https://github.com/montogeek) - https://montogeek.com
 - [Martin Heidegger](https://github.com/martinheidegger)
+- [Leo Liang](https://github.com/aleung)
 
 # LICENSE (MIT)
 
