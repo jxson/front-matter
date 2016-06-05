@@ -42,7 +42,9 @@ test-node: node_modules
 
 .PHONY: test-browser
 test-browser: node_modules
+ifeq ($(TRAVIS_PULL_REQUEST),true)
 	zuul -- test/index.js
+endif
 
 .PHONY: zuul
 zuul: node_modules
