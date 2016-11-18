@@ -25,43 +25,51 @@ With [npm][npm] do:
 
 So you have a file `example.md`:
 
-    ---
-    title: Just hack'n
-    description: Nothing to see here
-    ---
+```yaml
+---
+title: Just hack'n
+description: Nothing to see here
+---
 
-    This is some text about some stuff that happened sometime ago
+This is some text about some stuff that happened sometime ago
+```
 
 **NOTE:** As of `front-matter@2.0.0` valid front matter is considered to have
 the starting separator on the first line.
 
 Then you can do this:
 
-    var fs = require('fs')
-      , fm = require('front-matter')
+```javascript
+var fs = require('fs')
+  , fm = require('front-matter')
 
-    fs.readFile('./example.md', 'utf8', function(err, data){
-      if (err) throw err
+fs.readFile('./example.md', 'utf8', function(err, data){
+  if (err) throw err
 
-      var content = fm(data)
+  var content = fm(data)
 
-      console.log(content)
-    })
+  console.log(content)
+})
+```
 
 And end up with an object like this:
 
-    {
-        attributes: {
-            title: 'Just hack\'n',
-            description: 'Nothing to see here'
-        },
-        body: '\nThis is some text about some stuff that happened sometime ago',
-        frontmatter: 'title: Just hack\'n\ndescription: Nothing to see here'
-    }
+```javascript
+{
+    attributes: {
+        title: 'Just hack\'n',
+        description: 'Nothing to see here'
+    },
+    body: '\nThis is some text about some stuff that happened sometime ago',
+    frontmatter: 'title: Just hack\'n\ndescription: Nothing to see here'
+}
+```
 
 # Methods
 
-    var fm = require('front-matter')
+```javascript
+var fm = require('front-matter')
+```
 
 ## fm(string)
 
@@ -77,7 +85,9 @@ Check if a string contains a front matter header of "---" or "= yaml =". Primari
 
 Returns `true` or `false`
 
+```javascript
     fm.test(string) #=> true || false
+```
 
 # Contributing
 
