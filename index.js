@@ -4,7 +4,7 @@ var pattern = '^(' +
   optionalByteOrderMark +
   '(= yaml =|---)' +
   '$([\\s\\S]*?)' +
-  '(?:\\2|\\.\\.\\.)' +
+  '^(?:\\2|\\.\\.\\.)' +
   '$' +
   (process.platform === 'win32' ? '\\r?' : '') +
   '(?:\\n)?)'
