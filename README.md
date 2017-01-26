@@ -122,6 +122,7 @@ This module is awesome because of all the folks who submitted pull requests:
 - [Fernando Montoya](https://github.com/montogeek) - https://montogeek.com
 - [Martin Heidegger](https://github.com/martinheidegger)
 - [Leo Liang](https://github.com/aleung)
+- [Kasper Pedersen](https://github.com/kasperpedersen)
 
 # LICENSE (MIT)
 
