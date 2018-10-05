@@ -124,6 +124,12 @@ This module is awesome because of all the folks who submitted pull requests:
 - [Leo Liang](https://github.com/aleung)
 - [Kasper Pedersen](https://github.com/kasperpedersen)
 
+# CHANGELOG
+
+## 3.0.0
+* CI only tests Node versions >= v6 (drops v4, and v5)
+*
+
 # LICENSE (MIT)
 
 Copyright (c) Jason Campbell ("Author")
