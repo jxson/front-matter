@@ -1,7 +1,7 @@
 interface FrontMatterResult<T> {
   readonly attributes: T
   readonly body: string
-  readonly frontmatter: string
+  readonly frontmatter?: string
 }
 
 interface FM {
