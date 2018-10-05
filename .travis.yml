@@ -7,7 +7,6 @@ node_js:
 - 8
 - 7
 - 6
-- 5
 before_install:
 - npm install -g npm
 env:
@@ -21,5 +20,13 @@ env:
 script: make travis
 matrix:
   exclude:
-  - node_js: 4
+  - node_js: 6
+    env: TEST=browser
+  - node_js: 7
+    env: TEST=browser
+  - node_js: 8
+    env: TEST=browser
+  - node_js: 9
+    env: TEST=browser
+  - node_js: 10
     env: TEST=browser
