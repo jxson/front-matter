@@ -2,7 +2,12 @@ sudo: false
 language: node_js
 node_js:
 - stable
-- 4
+- 10
+- 9
+- 8
+- 7
+- 6
+- 5
 before_install:
 - npm install -g npm
 env:
