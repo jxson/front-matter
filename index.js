@@ -1,12 +1,13 @@
 var parser = require('js-yaml')
 var optionalByteOrderMark = '\\ufeff?'
+var platform = typeof process !== 'undefined' ? process.platform : ''
 var pattern = '^(' +
   optionalByteOrderMark +
   '(= yaml =|---)' +
   '$([\\s\\S]*?)' +
   '^(?:\\2|\\.\\.\\.)\\s*' +
   '$' +
-  (process.platform === 'win32' ? '\\r?' : '') +
+  (platform === 'win32' ? '\\r?' : '') +
   '(?:\\n)?)'
 // NOTE: If this pattern uses the 'g' flag the `regex` variable definition will
 // need to be moved down into the functions that use it.
