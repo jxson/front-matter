@@ -25,11 +25,11 @@
   "devDependencies": {
     "brfs": "^1.4.3",
     "coveralls": "^2.11.6",
-    "istanbul": "^0.3.6",
+    "istanbul": "^0.4.5",
     "standard": "^6.0.4",
-    "standard-format": "^2.1.0",
+    "standard-format": "^2.2.4",
     "tape": "^4.4.0",
-    "zuul": "^3.10.1"
+    "zuul": "^3.12.0"
   },
   "contributors": [
     "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
