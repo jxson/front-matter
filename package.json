@@ -20,7 +20,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "js-yaml": "^3.10.0"
+    "js-yaml": "^3.13.1"
   },
   "devDependencies": {
     "brfs": "^1.4.3",
