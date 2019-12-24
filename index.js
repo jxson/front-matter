@@ -23,25 +23,51 @@ function extractor (string) {
   if (lines[0] && /= yaml =|---/.test(lines[0])) {
     return parse(string)
   } else {
-    return { attributes: {}, body: string }
+    return {
+      attributes: {},
+      body: string,
+      bodyBegin: 1
+    }
   }
+}
+
+function computeLocation (match, body) {
+  var line = 1
+  var pos = body.indexOf('\n')
+  var offset = match.index + match[0].length
+
+  while (pos !== -1) {
+    if (pos >= offset) {
+      return line
+    }
+    line++
+    pos = body.indexOf('\n', pos + 1)
+  }
+
+  return line
 }
 
 function parse (string) {
   var match = regex.exec(string)
-
   if (!match) {
     return {
       attributes: {},
-      body: string
+      body: string,
+      bodyBegin: 1
     }
   }
 
   var yaml = match[match.length - 1].replace(/^\s+|\s+$/g, '')
   var attributes = parser.load(yaml) || {}
   var body = string.replace(match[0], '')
+  var line = computeLocation(match, string)
 
-  return { attributes: attributes, body: body, frontmatter: yaml }
+  return {
+    attributes: attributes,
+    body: body,
+    bodyBegin: line,
+    frontmatter: yaml
+  }
 }
 
 function test (string) {

@@ -27,6 +27,8 @@ test('fm(string) - parse yaml delinetead by `---`', function (t) {
       t.ok(content.body.match("Also this shouldn't be a problem"),
         'should match body')
 
+      t.equal(content.bodyBegin, 10)
+
       t.ok(content.frontmatter, 'should have a `frontmatter` key')
       t.ok(content.frontmatter.match('title: Three dashes marks the spot'), 'should match frontmatter')
       t.ok(content.frontmatter.match('expaned-description: with some --- crazy stuff in it'), 'should match frontmatter')
@@ -94,6 +96,7 @@ test('fm(string) - string missing body', function (t) {
       t.equal(content.attributes.title, 'Three dashes marks the spot')
       t.equal(content.attributes.tags.length, 3)
       t.equal(content.body, '')
+      t.equal(content.bodyBegin, 9)
       t.end()
     })
 })
@@ -146,6 +149,7 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
 
       var content = fm(data)
       t.equal(content.body, data)
+      t.equal(content.bodyBegin, 1)
       t.end()
     })
 })
@@ -212,7 +216,8 @@ test('Supports live updating', function (t) {
 
   t.same(content, {
     attributes: {},
-    body: string
+    body: string,
+    bodyBegin: 1
   })
 
   string += '\n---\n'
@@ -220,6 +225,7 @@ test('Supports live updating', function (t) {
   t.same(content, {
     attributes: { foo: 'bar' },
     body: '',
+    bodyBegin: 4,
     frontmatter: 'foo: bar'
   })
 

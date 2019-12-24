@@ -60,7 +60,8 @@ And end up with an object like this:
         title: 'Just hack\'n',
         description: 'Nothing to see here'
     },
-    body: '\nThis is some text about some stuff that happened sometime ago',
+    body: 'This is some text about some stuff that happened sometime ago',
+    bodyBegin: 6,
     frontmatter: 'title: Just hack\'n\ndescription: Nothing to see here'
 }
 ```
@@ -77,6 +78,7 @@ Return a `content` object with two properties:
 
 * `content.attributes` contains the extracted yaml attributes in json form
 * `content.body` contains the string contents below the yaml separators
+* `content.bodyBegin` contains the line number the body contents begins at
 * `content.frontmatter` contains the original yaml string contents
 
 # fm.test(string)
