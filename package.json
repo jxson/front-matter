@@ -23,8 +23,8 @@
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "brfs": "^1.4.3",
-    "coveralls": "^2.11.6",
+    "brfs": "^2.0.2",
+    "coveralls": "^3.0.9",
     "istanbul": "^0.4.5",
     "standard": "^6.0.4",
     "standard-format": "^2.2.4",
