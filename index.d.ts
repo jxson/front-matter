@@ -10,4 +10,5 @@ interface FM {
   test(file: string): boolean
 }
 
-export const fm: FM
+declare const fm: FM
+export default fm
