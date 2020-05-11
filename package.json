@@ -1,5 +1,5 @@
 {
-  "author": "Jason Campbell <jason@js.la> (http://twitter.com/jxson)",
+  "author": "Jason Campbell <jasoncampbell@google.com> (http://twitter.com/jxson)",
   "name": "front-matter",
   "description": "Extract YAML front matter from a string",
   "keywords": [
