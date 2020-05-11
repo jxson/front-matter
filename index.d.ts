@@ -1,4 +1,4 @@
-interface FrontMatterResult<T> {
+export interface FrontMatterResult<T> {
   readonly attributes: T
   readonly body: string
   readonly bodyBegin: number;
@@ -11,4 +11,4 @@ interface FM {
 }
 
 declare const fm: FM
-export = fm
+export default fm
