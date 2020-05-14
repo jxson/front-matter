@@ -154,6 +154,19 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
     })
 })
 
+test('fm(string) - not a front matter, markdown with nastier hrs', function (t) {
+  fs.readFile(
+    path.resolve(__dirname, '../examples/no-front-matter-with-hrs.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read should not error')
+
+      var content = fm(data)
+      t.equal(content.body, data)
+      t.end()
+    })
+})
+
 test('fm(string) - complex yaml', function (t) {
   fs.readFile(
     path.resolve(__dirname, '../examples/complex-yaml.md'),
