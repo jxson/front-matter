@@ -101,6 +101,19 @@ test('fm(string) - string missing body', function (t) {
     })
 })
 
+test('fm(string) - insecure yaml', function (t) {
+  fs.readFile(
+    path.resolve(__dirname, '../examples/unsafe.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
+      t.throws(() => {
+        fm(data)
+      }, /YAMLException/)
+      t.end()
+    })
+})
+
 test('fm(string) - wrapped test in yaml', function (t) {
   fs.readFile(
     path.resolve(__dirname, '../examples/wrapped-text.md'),
@@ -154,13 +167,13 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
     })
 })
 
-test('fm(string) - complex yaml', function (t) {
+test('fm(string, true) - complex yaml', function (t) {
   fs.readFile(
     path.resolve(__dirname, '../examples/complex-yaml.md'),
     'utf8',
     function (err, data) {
       t.error(err, 'read(...) should not error')
-      var content = fm(data)
+      var content = fm(data, true)
       t.ok(content.attributes, 'should have `attributes` key')
       t.equal(content.attributes.title, 'This is a title!')
       t.equal(content.attributes.contact, null)

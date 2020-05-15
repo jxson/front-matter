@@ -16,12 +16,12 @@ var regex = new RegExp(pattern, 'm')
 module.exports = extractor
 module.exports.test = test
 
-function extractor (string) {
+function extractor (string, allowUnsafe = false) {
   string = string || ''
 
   var lines = string.split(/(\r?\n)/)
   if (lines[0] && /= yaml =|---/.test(lines[0])) {
-    return parse(string)
+    return parse(string, allowUnsafe)
   } else {
     return {
       attributes: {},
@@ -47,7 +47,7 @@ function computeLocation (match, body) {
   return line
 }
 
-function parse (string) {
+function parse (string, allowUnsafe) {
   var match = regex.exec(string)
   if (!match) {
     return {
@@ -57,8 +57,9 @@ function parse (string) {
     }
   }
 
+  var loader = allowUnsafe ? parser.load : parser.safeLoad
   var yaml = match[match.length - 1].replace(/^\s+|\s+$/g, '')
-  var attributes = parser.load(yaml) || {}
+  var attributes = loader(yaml) || {}
   var body = string.replace(match[0], '')
   var line = computeLocation(match, string)
 
