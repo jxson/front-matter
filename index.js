@@ -16,12 +16,12 @@ var regex = new RegExp(pattern, 'm')
 module.exports = extractor
 module.exports.test = test
 
-function extractor (string, allowUnsafe = false) {
+function extractor (string, options = {allowUnsafe: false}) {
   string = string || ''
 
   var lines = string.split(/(\r?\n)/)
   if (lines[0] && /= yaml =|---/.test(lines[0])) {
-    return parse(string, allowUnsafe)
+    return parse(string, options.allowUnsafe)
   } else {
     return {
       attributes: {},
