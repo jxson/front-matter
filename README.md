@@ -72,7 +72,7 @@ And end up with an object like this:
 var fm = require('front-matter')
 ```
 
-## fm(string, allowUnsafe = false)
+## fm(string, { allowUnsafe: false })
 
 Return a `content` object with two properties:
 
@@ -81,8 +81,8 @@ Return a `content` object with two properties:
 * `content.bodyBegin` contains the line number the body contents begins at
 * `content.frontmatter` contains the original yaml string contents
 
-**NOTE:** By default `fm()` uses `ys-yaml`'s `safeLoad` unless you set the
-optional second argument to true.
+**NOTE:** By default `fm()` uses `ys-yaml`'s `safeLoad` unless you set
+`allowUnsafe` in the options object to true.
 
 # fm.test(string)
 
