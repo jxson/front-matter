@@ -16,9 +16,11 @@ var regex = new RegExp(pattern, 'm')
 module.exports = extractor
 module.exports.test = test
 
-function extractor (string, options = {allowUnsafe: false}) {
+function extractor (string, options) {
   string = string || ''
-
+  var defaultOptions = { allowUnsafe: false }
+  options = options instanceof Object ? {...defaultOptions, ...options} : defaultOptions
+  options.allowunsafe = Boolean(options.allowUnsafe)
   var lines = string.split(/(\r?\n)/)
   if (lines[0] && /= yaml =|---/.test(lines[0])) {
     return parse(string, options.allowUnsafe)
