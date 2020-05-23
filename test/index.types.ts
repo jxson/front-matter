@@ -28,6 +28,14 @@ This is some text about some stuff that happened sometime ago`;
     console.log(bodyBegin);
     console.log(frontmatter);
   }
+
+  {
+    fm(file)
+  }
+
+  {
+    fm(file, {allowUnsafe: true})
+  }
 }
 
 {

@@ -19,13 +19,18 @@ let nullBox: null;
   /* ===================== fm ===================== */
 
   {
-    // THROWS 1 arguments, but got 0.
+    // THROWS Expected 1-2 arguments, but got 0.
     fm()
   }
 
   {
     // THROWS Argument of type 'null' is not assignable to parameter of type 'string'.
     fm(null)
+  }
+
+  {
+    // THROWS 'string' is not assignable to type 'boolean | undefined'.
+    fm(file, {allowUnsafe: 'yes'})
   }
 
   {
@@ -69,7 +74,6 @@ let nullBox: null;
   }
 
   {
-
     // THROWS Type 'boolean' is not assignable to type 'null'.
     nullBox = fm.test(file)
   }
