@@ -20,7 +20,7 @@ function extractor (string, options) {
   string = string || ''
   var defaultOptions = { allowUnsafe: false }
   options = options instanceof Object ? {...defaultOptions, ...options} : defaultOptions
-  options.allowunsafe = Boolean(options.allowUnsafe)
+  options.allowUnsafe = Boolean(options.allowUnsafe)
   var lines = string.split(/(\r?\n)/)
   if (lines[0] && /= yaml =|---/.test(lines[0])) {
     return parse(string, options.allowUnsafe)
