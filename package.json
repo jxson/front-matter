@@ -17,13 +17,14 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "make test && check-dts"
   },
   "dependencies": {
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
     "brfs": "^2.0.2",
+    "check-dts": "^0.3.0",
     "coveralls": "^3.0.9",
     "istanbul": "^0.4.5",
     "standard": "^6.0.4",

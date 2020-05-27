@@ -5,8 +5,16 @@ export interface FrontMatterResult<T> {
   readonly frontmatter?: string
 }
 
+export interface FrontMatterOptions {
+  /**
+   * Whether to use [safeload](https://github.com/nodeca/js-yaml#safeload-string---options-)
+   * @default true
+   */
+  allowUnsafe?: boolean
+}
+
 interface FM {
-  <T>(file: string): FrontMatterResult<T>
+  <T>(file: string, options?: FrontMatterOptions): FrontMatterResult<T>
   test(file: string): boolean
 }
 
