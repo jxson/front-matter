@@ -173,7 +173,7 @@ test('fm(string, true) - complex and unsafe yaml', function (t) {
     'utf8',
     function (err, data) {
       t.error(err, 'read(...) should not error')
-      var content = fm(data, {allowUnsafe: true})
+      var content = fm(data, { allowUnsafe: true })
       t.ok(content.attributes, 'should have `attributes` key')
       t.equal(content.attributes.title, 'This is a title!')
       t.equal(content.attributes.contact, null)
