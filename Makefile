@@ -23,7 +23,7 @@ clean:
 
 .PHONY: fmt
 fmt: node_modules
-	@standard-format -w
+	@standard --fix
 
 .PHONY: lint
 lint: node_modules

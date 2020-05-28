@@ -27,8 +27,7 @@
     "check-dts": "^0.3.0",
     "coveralls": "^3.0.9",
     "istanbul": "^0.4.5",
-    "standard": "^6.0.4",
-    "standard-format": "^2.2.4",
+    "standard": "^14.3.4",
     "tape": "^4.4.0",
     "zuul": "^3.12.0"
   },
