@@ -81,7 +81,7 @@ Return a `content` object with two properties:
 * `content.bodyBegin` contains the line number the body contents begins at
 * `content.frontmatter` contains the original yaml string contents
 
-**NOTE:** By default `fm()` uses `ys-yaml`'s `safeLoad` unless you set
+**NOTE:** By default `fm()` uses `js-yaml`'s `safeLoad` unless you set
 `allowUnsafe` in the options object to true.
 
 # fm.test(string)
