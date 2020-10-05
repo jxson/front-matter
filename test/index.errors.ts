@@ -1,4 +1,4 @@
-import fm from '../'
+import fm = require('../')
 
 type Attributes = {
   title: string,
