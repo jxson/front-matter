@@ -1,4 +1,8 @@
 # front-matter
+
+1、es7 {...defaultOptions } => Object.assign
+减少项目有polyfill的需求和问题。
+
 [![build][build-img]][build-url]
 [![coverage][coverage-img]][coverage-url]
 [![npm][npm-img]][npm-url]
