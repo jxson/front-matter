@@ -20,7 +20,7 @@
     "test": "make test && check-dts"
   },
   "dependencies": {
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "brfs": "^2.0.2",
