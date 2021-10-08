@@ -155,7 +155,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [build-img]: https://img.shields.io/travis/jxson/front-matter/master.svg
 [build-url]: http://travis-ci.org/jxson/front-matter
 [npm-img]: https://img.shields.io/npm/dm/front-matter.svg
-[npm-url]: https://npmjs.org/package/standard
+[npm-url]: https://npmjs.org/package/front-matter
 [github-img]: https://img.shields.io/github/stars/jxson/front-matter.svg?style=social&label=Star
 [github-url]: https://github.com/jxson/front-matter/
 [standard-img]: https://cdn.rawgit.com/feross/standard/master/badge.svg
