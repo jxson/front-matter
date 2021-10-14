@@ -167,21 +167,6 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
     })
 })
 
-test('fm(string, true) - complex and unsafe yaml', function (t) {
-  fs.readFile(
-    path.resolve(__dirname, '../examples/complex-yaml.md'),
-    'utf8',
-    function (err, data) {
-      t.error(err, 'read(...) should not error')
-      var content = fm(data, { allowUnsafe: true })
-      t.ok(content.attributes, 'should have `attributes` key')
-      t.equal(content.attributes.title, 'This is a title!')
-      t.equal(content.attributes.contact, null)
-      t.equal(content.attributes.match.toString(), '/pattern/gim')
-      t.end()
-    })
-})
-
 test('fm.test(string) - yaml seperator', function (t) {
   fs.readFile(
     path.resolve(__dirname, '../examples/yaml-seperator.md'),
