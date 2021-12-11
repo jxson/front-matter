@@ -1,4 +1,4 @@
-import fm from '../'
+import fm from '../';
 
 type Attributes = {
   title: string,
@@ -29,8 +29,8 @@ let nullBox: null;
   }
 
   {
-    // THROWS 'string' is not assignable to type 'boolean | undefined'.
-    fm(file, {allowUnsafe: 'yes'})
+    // THROWS 'string' is not assignable to type 'Schema | undefined'.
+    fm(file, {schema: 'yes'})
   }
 
   {
@@ -43,7 +43,7 @@ let nullBox: null;
   }
 
   {
-    
+
     let {attributes, body, bodyBegin, frontmatter} = fm<Attributes>(file);
 
     // THROWS Property 'foo' does not exist on type 'Attributes'.

@@ -23,6 +23,7 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
     "brfs": "^2.0.2",
     "check-dts": "^0.3.0",
     "coveralls": "^3.0.9",

@@ -34,7 +34,7 @@ This is some text about some stuff that happened sometime ago`;
   }
 
   {
-    fm(file, {allowUnsafe: true})
+    fm(file)
   }
 }
 

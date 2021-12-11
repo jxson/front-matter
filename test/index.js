@@ -114,6 +114,25 @@ test('fm(string) - insecure yaml', function (t) {
     })
 })
 
+test('fm(string) - with dates', function (t) {
+  fs.readFile(
+    path.resolve(__dirname, '../examples/with-dates.md'),
+    'utf8',
+    function (err, data) {
+      t.error(err, 'read(...) should not error')
+
+      var content = fm(data)
+
+      console.log(data)
+
+      t.equal(content.attributes.title, 'Example with date')
+      t.equal(content.attributes.description, 'Just an example of using dates')
+      t.equal(content.attributes.date, '2021-01-01')
+      t.end()
+    }
+  )
+})
+
 test('fm(string) - wrapped test in yaml', function (t) {
   fs.readFile(
     path.resolve(__dirname, '../examples/wrapped-text.md'),

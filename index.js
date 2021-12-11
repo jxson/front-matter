@@ -46,7 +46,7 @@ function computeLocation (match, body) {
   return line
 }
 
-function parse (string) {
+function parse (string, opts) {
   var match = regex.exec(string)
   if (!match) {
     return {
@@ -56,8 +56,10 @@ function parse (string) {
     }
   }
 
+  var defaultOpts = { schema: parser.CORE_SCHEMA }
+
   var yaml = match[match.length - 1].replace(/^\s+|\s+$/g, '')
-  var attributes = parser.load(yaml) || {}
+  var attributes = parser.load(yaml, opts || defaultOpts) || {}
   var body = string.replace(match[0], '')
   var line = computeLocation(match, string)
 
