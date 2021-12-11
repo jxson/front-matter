@@ -123,8 +123,6 @@ test('fm(string) - with dates', function (t) {
 
       var content = fm(data)
 
-      console.log(data)
-
       t.equal(content.attributes.title, 'Example with date')
       t.equal(content.attributes.description, 'Just an example of using dates')
       t.equal(content.attributes.date, '2021-01-01')
