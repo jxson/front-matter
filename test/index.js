@@ -1,7 +1,7 @@
-var fm = require('../')
-var fs = require('fs')
-var path = require('path')
-var test = require('tape')
+const fm = require('../')
+const fs = require('fs')
+const path = require('path')
+const test = require('tape')
 
 test('var fm = require("front-matter")', function (t) {
   t.equal(typeof fm, 'function')
@@ -15,7 +15,7 @@ test('fm(string) - parse yaml delinetead by `---`', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
+      const content = fm(data)
 
       t.ok(content.attributes, 'should have `attributes` key')
       t.equal(content.attributes.title, 'Three dashes marks the spot')
@@ -44,9 +44,9 @@ test('fm(string) - parse yaml delinetead by `= yaml =`', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
-      var meta = content.attributes
-      var body = content.body
+      const content = fm(data)
+      const meta = content.attributes
+      const body = content.body
 
       t.equal(meta.title, "I couldn't think of a better name")
       t.equal(meta.description, 'Just an example of using `= yaml =`')
@@ -64,9 +64,9 @@ test('fm(string) - parse yaml ended by `...`', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
-      var meta = content.attributes
-      var body = content.body
+      const content = fm(data)
+      const meta = content.attributes
+      const body = content.body
 
       t.equal(meta.title, 'Example with dots document ending')
       t.equal(meta.description, 'Just an example of using `...`')
@@ -78,7 +78,7 @@ test('fm(string) - parse yaml ended by `...`', function (t) {
 })
 
 test('fm(string) - string missing front-matter', function (t) {
-  var content = fm('No front matter here')
+  const content = fm('No front matter here')
 
   t.equal(content.body, 'No front matter here')
   t.end()
@@ -91,7 +91,7 @@ test('fm(string) - string missing body', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
+      const content = fm(data)
 
       t.equal(content.attributes.title, 'Three dashes marks the spot')
       t.equal(content.attributes.tags.length, 3)
@@ -121,8 +121,8 @@ test('fm(string) - wrapped test in yaml', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
-      var folded = [
+      const content = fm(data)
+      const folded = [
         'There once was a man from Darjeeling',
         'Who got on a bus bound for Ealing',
         '    It said on the door',
@@ -145,7 +145,7 @@ test('fm(string) - strings with byte order mark', function (t) {
     function (err, data) {
       t.error(err, 'read(...) should not error')
 
-      var content = fm(data)
+      const content = fm(data)
 
       t.equal(content.attributes.title, "Relax guy, I'm not hiding any BOMs")
 
@@ -160,7 +160,7 @@ test('fm(string) - no front matter, markdown with hr', function (t) {
     function (err, data) {
       t.error(err, 'read should not error')
 
-      var content = fm(data)
+      const content = fm(data)
       t.equal(content.body, data)
       t.equal(content.bodyBegin, 1)
       t.end()
@@ -173,7 +173,7 @@ test('fm(string, true) - complex and unsafe yaml', function (t) {
     'utf8',
     function (err, data) {
       t.error(err, 'read(...) should not error')
-      var content = fm(data, { allowUnsafe: true })
+      const content = fm(data, { allowUnsafe: true })
       t.ok(content.attributes, 'should have `attributes` key')
       t.equal(content.attributes.title, 'This is a title!')
       t.equal(content.attributes.contact, null)
@@ -210,9 +210,9 @@ test('fm.test(string) - no front-matter', function (t) {
 })
 
 test('Supports live updating', function (t) {
-  var seperator = '---'
-  var string = ''
-  for (var i = 0; i < seperator.length; i++) {
+  const seperator = '---'
+  let string = ''
+  for (let i = 0; i < seperator.length; i++) {
     string += seperator[i]
 
     try {
@@ -225,7 +225,7 @@ test('Supports live updating', function (t) {
   string += '\n'
   string += 'foo: bar'
 
-  var content = fm(string)
+  let content = fm(string)
 
   t.same(content, {
     attributes: {},

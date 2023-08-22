@@ -152,8 +152,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [jekyll]: https://github.com/mojombo/jekyll
 [coverage-img]: https://img.shields.io/coveralls/jxson/front-matter.svg
 [coverage-url]: https://coveralls.io/r/jxson/front-matter?branch=master
-[build-img]: https://img.shields.io/travis/jxson/front-matter/master.svg
-[build-url]: http://travis-ci.org/jxson/front-matter
+[build-img]: https://github.com/jxson/front-matter/workflows/CI/badge.svg
+[build-url]: https://github.com/jxson/front-matter/actions/workflows/ci.yml?query=branch%3Amaster
 [npm-img]: https://img.shields.io/npm/dm/front-matter.svg
 [npm-url]: https://npmjs.org/package/front-matter
 [github-img]: https://img.shields.io/github/stars/jxson/front-matter.svg?style=social&label=Star
